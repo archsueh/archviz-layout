@@ -1,12 +1,12 @@
 ---
-name: arcviz-layout
+name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems.
 ---
 
-# Architectural Visualization Presentation Layout (Arcviz-Layout)
+# Architectural Visualization Presentation Layout (Archviz-Layout)
 
 ## 概述
-Arcviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrative）**、**技术精度（Precision）**与**视觉美学（Aesthetics）**的系统性规范。本 Skill 整合了瑞士国际主义字体排印风格（Müller-Brockmann 模块化网格）、维涅里设计法则（Vignelli Canon 视觉层级）以及 Archviz 图像色彩配对系统，旨在让 AI 智能体在排版建筑设计展板（A0/A1 Panels）、个人作品集（Portfolios）和场地分析图纸时，遵循严谨的理性秩序，杜绝无序拼凑与低质 AI 审美。
+Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrative）**、**技术精度（Precision）**与**视觉美学（Aesthetics）**的系统性规范。本 Skill 整合了瑞士国际主义字体排印风格（Müller-Brockmann 模块化网格）、维涅里设计法则（Vignelli Canon 视觉层级）以及 Archviz 图像色彩配对系统，旨在让 AI 智能体在排版建筑设计展板（A0/A1 Panels）、个人作品集（Portfolios）和场地分析图纸时，遵循严谨的理性秩序，杜绝无序拼凑与低质 AI 审美。
 
 ---
 

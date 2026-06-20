@@ -1,10 +1,10 @@
-# Arcviz-Layout (建筑表现与图面设计 Agent Skill)
+# Archviz-Layout (建筑表现与图面设计 Agent Skill)
 
-[![Agent Skill](https://img.shields.io/badge/Agent--Skill-arcviz--layout-blue.svg?style=flat-square)](https://github.com/archsueh/archviz-layout)
+[![Agent Skill](https://img.shields.io/badge/Agent--Skill-archviz--layout-blue.svg?style=flat-square)](https://github.com/archsueh/archviz-layout)
 [![Supported Agents](https://img.shields.io/badge/Supported--Agents-Claude%20%7C%20Gemini%20%7C%20Codex-orange.svg?style=flat-square)](https://github.com/archsueh/archviz-layout)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://github.com/archsueh/archviz-layout)
 
-`arcviz-layout` 是一个专为 AI 智能体（如 Claude Code, Gemini CLI, Codex 等）设计的建筑学图面排版与视觉设计 Skill。
+`archviz-layout` 是一个专为 AI 智能体（如 Claude Code, Gemini CLI, Codex 等）设计的建筑学图面排版与视觉设计 Skill。
 
 本 Skill 融汇了**画面叙事（Narrative）**、**技术精度（Precision）**与**视觉美学（Aesthetics）**的系统性规范。它整合了瑞士国际主义字体排印风格（Müller-Brockmann 模块化网格）、维涅里设计法则（Vignelli Canon 视觉层级）以及 Archviz 图像色彩配对系统，旨在让 AI 智能体在排版建筑设计展板（A0/A1 Panels）、个人作品集（Portfolios）、场地分析图纸以及社交卡片时，遵循严谨的理性秩序，杜绝无序拼凑与低质 AI 审美。
 
@@ -15,12 +15,12 @@
 ### 方式 A：通过 `npx skills` 自动安装 (推荐)
 在你的项目根目录下执行：
 ```bash
-npx skills add https://github.com/archsueh/archviz-layout --skill arcviz-layout
+npx skills add https://github.com/archsueh/archviz-layout --skill archviz-layout
 ```
 
 ### 方式 B：手动克隆到全局 Agent 技能目录
 ```bash
-git clone https://github.com/archsueh/archviz-layout.git ~/.agents/skills/arcviz-layout
+git clone https://github.com/archsueh/archviz-layout.git ~/.agents/skills/archviz-layout
 ```
 
 ---
@@ -109,7 +109,7 @@ git clone https://github.com/archsueh/archviz-layout.git ~/.agents/skills/arcviz
 
 ## 🔗 相关资源与参考
 
-* 完整的排版规则与技术公式请参阅 [SKILL.md](file:///Users/mac/.agents/skills/arcviz-layout/SKILL.md)。
+* 完整的排版规则与技术公式请参阅 [SKILL.md](file:///Users/mac/.agents/skills/archviz-layout/SKILL.md)。
 * 想要深度探讨设计方案？可以使用 `/grill-me` 针对本 Skill 或具体设计进行审计。
 
 ## 📄 开源协议
