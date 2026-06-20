@@ -329,7 +329,7 @@ h2.chapter-title::before {
 为了在不同透视效果图、展板及 mockups 中维持标志/字形完全一致，禁止让 AI 自由绘制 logo。应采用**两步锁定管线**：
 * **步骤 A：建立 canonical 标志底片**
   - **SVG 转 PNG（首选）**：使用代码绘制精准的 SVG 标志（标题 + icon），并在渲染端导出为高分辨率 PNG（在 headless 环境下，避免 `Helvetica` 降级为圆角 `Noto Sans`/`Calibri` 的 Slop 效应，必须指定 **`Liberation Sans`** 或嵌入的品牌真字体）。
-  - **GPT Image 2 单色标志板**：在平面纯色背景上生成标志板，挑出字形与间距最完美的一张，将其 PNG 固化为 master底片。
+  - **GPT Image 2 单色标志板**：在平面纯色背景上生成标志板，挑出字形与间距最完美的一张，将其 PNG 固化为 master 底片。
 * **步骤 B：在后续场景生成中强制引用 (inputImages)**
   - 将 canonical 标志 PNG 作为 `inputImages` / 参考图传入所有的场景渲染任务。
   - 提示词中附加**重现约束命令**：*“Reproduce the provided brand logo artwork EXACTLY as shown — same letterforms, spacing and symbol; do not redraw, restyle, translate or re-letter it. Place it as a printed/applied graphic in the scene.”*
@@ -347,7 +347,7 @@ h2.chapter-title::before {
 
 ### 1. 纸本视觉基调 (The Kami Stance)
 * **画布色底**：基色采用温润的羊皮纸/温和白（`#F4F1EA` 或 `#F3F0E8`），而非刺眼的纯白 `#FFFFFF`，以提供舒适的阅读底纹。
-* **文字层级与衬线主导**：主标题与陈述性文字使用高雅的衬线体/宋体（英文 Charter / Georgia，中文 TsangerJinKai02 / 思源宋体），其余正文配以安静的无线体/黑体。
+* **文字层级与衬线主导**：主标题与陈述性文字使用高雅的衬线体/宋体（英文 Charter / Georgia，中文 TsangerJinKai02 / 思源宋体），其余正文配以安静的无衬线体/黑体。
 * **字号比例**：遵循“双字号法则”，Display 大标题的字号通常为正文字号的 2 倍。大标题字重需偏轻（Light/Medium），严禁为了凸显存在感而加粗大字号标题。
 
 ### 2. 对齐与微间距纪律
