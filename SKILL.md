@@ -435,7 +435,60 @@ h2.chapter-title::before {
 [ ] 10. 导出格式已确认：PNG / SVG / PDF / HTML 卡片
 ```
 
-## 字号速查表 (Type Scale Cheat Sheet)
+---
+
+## 交叉优化：Layout × Diagram (Board with Charts)
+
+**功能：** 将 archviz-diagram 的图表嵌入到 archviz-layout 的版面中
+
+**脚本：** `scripts/render_board_with_charts.py`
+
+**支持模板：**
+- `a0-vertical` — A0 竖向展板
+- `a3-landscape` — A3 横向作品集
+- `social-3-4` — 3:4 社交卡片
+
+**支持视觉语言：**
+- `still-paper` — 静纸风格
+- `signal-proof` — 实证风格
+- `bridge-canvas` — 图桥风格
+
+**数据格式：**
+```json
+{
+  "title": "Chart Title",
+  "categories": ["A", "B", "C"],
+  "values": [10, 20, 15],
+  "labels": ["Label A", "Label B", "Label C"]
+}
+```
+
+**渲染命令：**
+```bash
+python3 scripts/render_board_with_charts.py \
+  --template a0-vertical \
+  --language still-paper \
+  --title "Project Title" \
+  --charts chart1.json chart2.json \
+  --outdir ./output \
+  --basename board-name
+```
+
+**参数：**
+- `--template`: 版面模板
+- `--language`: 视觉语言
+- `--title`: 展板标题
+- `--charts`: 图表 JSON 文件（可多个）
+
+**输出：**
+- `board-name.png` — 完整展板
+
+**版面结构：**
+- Tier 1: 标题区（35%）
+- Tier 4: 分析图区（图表嵌入）
+- Footer: 生成信息
+
+---
 
 | 场景 | 大标题 (Display) | 正文 / 标注 (Body) | 图名标注 (Caption) |
 |---|---|---|---|

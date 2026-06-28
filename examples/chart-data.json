@@ -1,0 +1,7 @@
+{
+  "title": "Performance Comparison",
+  "subtitle": "Accepted length τ",
+  "categories": ["Eagle3", "DFlash", "DSpark"],
+  "values": [3.21, 3.56, 4.12],
+  "labels": ["Eagle3", "DFlash", "DSpark"]
+}
