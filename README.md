@@ -81,18 +81,34 @@ git clone https://github.com/archsueh/archviz-layout.git ~/.agents/skills/archvi
 
 ## 📋 执行前检查清单 (Pre-Flight Checklist)
 
-执行排图任务前，请逐项确认，全部满足后再落版：
+### A. 落版前（结构骨架）
+
+全部满足后再进入 Layout：
 
 - [ ] **1. 确认输出媒介**：A0 展板 / A4 作品集 / 社交卡片 / PDF 画册。
-- [ ] **2. 已认领三套视觉语言之一**：静纸 / 实证 / 图桥。
+- [ ] **2. 已认领三套视觉语言之一**：静纸 / 实证 / 图桥（不混用）。
 - [ ] **3. 锁定调色板与字体方案**，且与项目性格一致。
 - [ ] **4. 资产清单已分级**：Tier 1 焦点图 $\ge 35\%$ 版面占比。
 - [ ] **5. 网格已定**：分栏数 + 网格间距 + 外留白均已确定。
 - [ ] **6. 对齐基准**：所有图纸顶部/底部已锁定到 Flowline。
 - [ ] **7. 安全区**：渲染图/效果图周围 $\ge 1$ 个网格单元留白。
 - [ ] **8. 字号控制**：全篇 $\le 2$ 种字号，已确认字重层级（Display vs Body 比例维持在 2:1 到 7:1）。
-- [ ] **9. 反模式自检**：彩虹图表 / 标题轰炸 / 文字压图 / 标志漂移。
+- [ ] **9. 反模式自检**：彩虹图表 / 标题轰炸 / 文字压图 / 标志漂移 / 强制拉伸。
 - [ ] **10. 确认导出格式**：PNG / SVG / PDF / HTML 卡片。
+
+### B. 成图后（Meng-style Board Polish）
+
+落版不等于可交付。成图后必须再跑一遍反 AI 味核校（细节见 [SKILL.md](./SKILL.md) 的 **Meng-style Board Polish**）：
+
+- [ ] **11. 字距**：全大写/Mono 标注 tracking 合适；正文无负 tracking。
+- [ ] **12. 真图**：Tier 1 为本项目资产，非假氛围 stock。
+- [ ] **13. 伪影**：结构/招牌/Logo/光影无 AI 破绽；图纸未拉伸。
+- [ ] **14. 叙事**：说明含场地/体量/策略名词，无空话堆砌。
+- [ ] **15. Human detail**：恰好 1–2 处项目专属细节（非随机装饰）。
+- [ ] **16. 媒介**：印刷灰阶 / 3:4≥75% / 9:16 安全区已核。
+- [ ] **17. 输出 `Board readiness`**：Ready / Needs polish / Not ready + Top fixes。
+
+> 网格与三套视觉语言是主干；Meng 层只补最后 10% 质检。**不**套用落地页 CTA / hover / SaaS marketing 套路。
 
 ---
 
@@ -109,7 +125,7 @@ git clone https://github.com/archsueh/archviz-layout.git ~/.agents/skills/archvi
 
 ## 🔗 相关资源与参考
 
-* 完整的排版规则与技术公式请参阅 [SKILL.md](file:///Users/mac/.agents/skills/archviz-layout/SKILL.md)。
+* 完整的排版规则、Meng-style Board Polish 与 Board readiness 模板见 [SKILL.md](./SKILL.md)。
 * 想要深度探讨设计方案？可以使用 `/grill-me` 针对本 Skill 或具体设计进行审计。
 
 ## 📄 开源协议

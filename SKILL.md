@@ -1,6 +1,6 @@
 ---
 name: archviz-layout
-description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems.
+description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages).
 ---
 
 # Architectural Visualization Presentation Layout (Archviz-Layout)
@@ -62,6 +62,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
    - 严格执行**影像优先（Image-First）**原则：能用图纸/分析图说话，就不堆砌文字。将图片置于视觉重心。若无图（纯文字叙事），则通过大号文字比例或排版装饰器创造呼吸感。
 5. **第五步：成图核校 (Verify)**
    - 检查视线流动线（Flowline）是否对齐，段落是否有寡妇词悬挂（Runts），色彩对比度是否满足易读性，网格间距是否一致，确认图面无过度装饰后成图。
+   - 随后强制跑一遍 **Meng-style Board Polish**（见下节）：字距、假图、AI 伪影、项目专属 human detail、Board readiness 输出。落版不等于可提交；核校通过才可交付。
 
 ---
 
@@ -408,6 +409,72 @@ h2.chapter-title::before {
 | **文字易读性妥协 (Outline Slop)**| 使用多层投影、粗描边或大面积黑 scrim 挽救文字可读性 | 贯彻“文字避让区构图”，生成图前划分 1/3 自然对比区，仅配微弱单层阴影保险。 |
 | **标志标识漂移 (Logo Drift)**| 在不同的 OOH/展板场景中，品牌标志字形与符号发生微调变形 | 先建立唯一的 SVG/PNG Canonical Logo Plate，将其作为 reference inputImages 喂给模型，并加 strict copy 命令。 |
 | **无头环境字体畸变 (Fallback Distortion)**| 网页转 PDF 或渲染图时，Helvetica 缩略字形变成圆角 Calibri / 微软雅黑 | 无头环境指定 `Liberation Sans` 或加载本地 TTF，禁用裸 `sans-serif` 声明。 |
+| **字距塌陷 (Tracking Collapse)** | 全大写图名/指标栏 letter-spacing 为 0 或负值，小字号挤成一团 | 全大写/Mono 标注给 `0.04em–0.12em` tracking；正文勿负 tracking；缩略图/手机预览再查一次。 |
+| **假氛围 Hero (Atmosphere Slop)** | Tier 1 用「现代建筑抽象氛围」或无关 stock 顶替方案真实渲染/现场 | Hero 必须是本项目方案图/实景；无图则改纯文字高雅排版，禁止假图凑数。 |
+| **装饰性 Human Touch 失败** | 加随机渐变、emoji、无语义装饰线冒充「细节」 | 只保留 1–2 处**项目相关**细节（材料小图、构造节点、场地专属图注）。 |
+
+---
+
+## Meng-style Board Polish（成图核校增强层）
+
+> 原则：网格与三套视觉语言是主干；本节只补 **最后 10% 反 AI 味**。灵感移植自 Meng To 落地页 critique（字距、真实图、伪影、human detail），已改写为建筑展板/作品集/社交卡语境。  
+> **不引入**落地页专属项：CTA 文案、hover 微交互、SaaS marketing 套路。社交 HTML 卡允许极轻量 reveal/hover，印刷展板一律忽略。
+
+### 1. 修复优先级（高 → 低）
+
+落版后按此顺序改，禁止先抠边角装饰：
+
+1. **Typography & tracking** — 字距、字重、全大写标注、缩略可读性  
+2. **Real project imagery** — Hero/关键图是否为本方案真实资产  
+3. **Image artifacts** — AI 渲染伪影、比例、光影、Logo 漂移  
+4. **Hierarchy & air** — Tier 占比、空气泡、Flowline  
+5. **Project-specific human detail** — 1–2 处方案专属细节  
+6. **Medium fitness** — 印刷灰阶 / 3:4 密度 / 9:16 安全区
+
+### 2. 核校条目（Board 版）
+
+| 维度 | 通过标准 | 常见失败 → 修正 |
+|---|---|---|
+| **Typography & letter-spacing** | 全篇 ≤ 2 字号；Display 轻字重；全大写/Mono 有适度 tracking；小字在 A0 退远与手机缩略均可读 | 正文负 tracking、指标栏挤成一坨 → 加大 tracking 或字号，减字数 |
+| **Real references** | Tier 1 为本项目渲染/实景/图纸；网络图已溯源 `assets/SOURCES.md` | 假氛围/无关 stock → 换真图或删图走纯文字 |
+| **Image refinement** | 无畸形结构、无乱码招牌、无漂浮 Logo；光影方向与相邻图一致；不拉伸图纸 | AI 伪影/比例扭曲 → 重渲或裁切替换，禁止 `object-fit: fill` 硬拉 |
+| **Narrative specificity** | 说明文字含场地/体量/策略等项目名词，禁止「现代、灵动、和谐」空话 | 空话段落 → 改写为可验证的设计陈述或删短 |
+| **Human detail** | 恰好 1–2 处方案专属细节（材料、节点、场地注记），服务叙事 | 0 处像模板；3+ 处像拼贴 → 收敛到 1–2 |
+| **Medium quality** | 展板：退 2m 灰阶层级清晰；社交卡：3:4 垂直覆盖 ≥75%；9:16 避让平台 UI | 中段空洞或安全区撞按钮 → 按媒介密度规则重排 |
+
+### 3. 交付输出格式（强制）
+
+核校或交付前，必须用以下格式汇报（可审计、可对比）：
+
+```text
+Board readiness: [Ready / Needs polish / Not ready]
+
+Top fixes:
+1. [Issue] — [specific correction]
+2. [Issue] — [specific correction]
+3. [Issue] — [specific correction]
+
+Checklist:
+- Typography & letter-spacing: [pass/fail + note]
+- Real project imagery: [pass/fail + note]
+- Image refinement / artifacts: [pass/fail + note]
+- Narrative specificity: [pass/fail + note]
+- Human detail (1–2 project-specific): [pass/fail + note]
+- Medium fitness (print / social / PDF): [pass/fail + note]
+```
+
+*Ready*：六项全 pass，可提交/出图。  
+*Needs polish*：有 fail 但结构骨架正确，列 Top fixes 后可修。  
+*Not ready*：网格未定、无 Hero、视觉语言混用或假图占 Tier 1 —— 退回第四步落版，不修皮。
+
+### 4. 与主干的分工
+
+| 层 | 负责 | 不负责 |
+|---|---|---|
+| **主干**（网格 / 三套语言 / Tier / 五步流程） | 结构、叙事动线、调性认领 | 细部字距与伪影清单 |
+| **Meng-style polish**（本节） | 成图后反 AI 味、readiness 判决 | 改网格分栏、换视觉语言、做 3D 渲染 |
+
+---
 
 ## 使用边界 / Scope Boundary
 
@@ -420,19 +487,35 @@ h2.chapter-title::before {
 
 ## 执行前检查清单 (Pre-Flight Checklist)
 
-执行前逐项确认，全部 ✓ 再落版：
+### A. 落版前（结构骨架）
+
+全部 ✓ 再进入第四步 Layout：
 
 ```
 [ ] 1. 确认输出媒介：A0 展板 / A4 作品集 / 社交卡片 / PDF 画册
-[ ] 2. 已认领三套视觉语言之一：静纸 / 实证 / 图桥
+[ ] 2. 已认领三套视觉语言之一：静纸 / 实证 / 图桥（不混用）
 [ ] 3. 锁定调色板与字体方案，且与项目性格一致
 [ ] 4. 资产清单已分级：Tier 1 焦点图 ≥ 35% 版面占比
 [ ] 5. 网格已定：分栏数 + 网格间距 + 外留白均已确定
 [ ] 6. 对齐基准：所有图纸顶部/底部已锁定到 Flowline
 [ ] 7. 安全区：渲染图/效果图周围 ≥ 1 个网格单元留白
 [ ] 8. 字号控制：全篇 ≤ 2 种字号，已确认字重层级
-[ ] 9. 反模式自检：彩虹图表 / 标题轰炸 / 文字压图 / 标志漂移
+[ ] 9. 反模式自检：彩虹图表 / 标题轰炸 / 文字压图 / 标志漂移 / 强制拉伸
 [ ] 10. 导出格式已确认：PNG / SVG / PDF / HTML 卡片
+```
+
+### B. 成图后（Meng-style Board Polish）
+
+全部 ✓ 且 `Board readiness` ≠ Not ready 再交付：
+
+```
+[ ] 11. 字距：全大写/Mono 标注 tracking 合适；正文无负 tracking；退远/缩略可读
+[ ] 12. 真图：Tier 1 为本项目资产，非假氛围；网络图已溯源
+[ ] 13. 伪影：结构/招牌/Logo/光影无 AI 破绽；图纸未拉伸
+[ ] 14. 叙事：说明含场地/体量/策略名词，无空话堆砌
+[ ] 15. Human detail：恰好 1–2 处项目专属细节（非随机装饰）
+[ ] 16. 媒介：印刷灰阶 / 3:4≥75% / 9:16 安全区 已按输出媒介核过
+[ ] 17. 已输出 Board readiness 块（Ready / Needs polish / Not ready + Top fixes）
 ```
 
 ---
