@@ -1,6 +1,13 @@
 ---
 name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages).
+license: MIT
+metadata:
+  version: 1.0.0
+  source: https://github.com/archsueh/archviz-layout
+  risk: safe
+  author: archsueh
+  triggers: presentation board, portfolio layout, competition drawing, board polish, readiness audit, grid system, 展板, 作品集, 排版, 建筑可视化, architectural layout
 ---
 
 # Architectural Visualization Presentation Layout (Archviz-Layout)
@@ -481,7 +488,7 @@ Checklist:
 | 属于本 Skill (IN) | 不属于本 Skill (OUT) |
 |---|---|
 | 展板/作品集/卡片版式、网格、字体、配色 | 3D 渲染生成 → `archviz-3d` / `archviz-sketch` |
-| 分析图排版与图表类型路由 | 纯信息图表 HTML 生成 → `archviz` |
+| 分析图排版与图表类型路由 | 纯信息图表 HTML 生成 → `archviz-diagram` |
 | 社交卡片/印刷 PDF/CSS Paged Media | 网站前端工程实现 → `frontend-design` |
 | AI 渲染品牌一致性管线 | 代码级 SVG 动画 → `threejs-*` |
 
