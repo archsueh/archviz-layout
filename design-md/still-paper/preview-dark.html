@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>静纸 Still Paper — Dark Surface</title>
+<style>
+  :root{
+    --canvas:#141413; --surface:#1F1B17; --hairline:#44403C;
+    --ink:#EDE8E0; --ink-muted:#9A8F82; --accent:#C96442; --on-accent:#141413;
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{background:var(--canvas); color:var(--ink);
+    font-family:Georgia,"Times New Roman",serif; -webkit-font-smoothing:antialiased;}
+  .board{max-width:920px; margin:0 auto; padding:56px; position:relative;}
+  header{border-bottom:1px solid var(--hairline); padding-bottom:20px; margin-bottom:28px;}
+  h1{font-size:42px; font-weight:500; margin:0 0 8px; letter-spacing:-0.01em;}
+  .phil{color:var(--accent); font-size:14px; letter-spacing:0.16em; text-transform:uppercase;}
+  h2{font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-muted);
+    margin:32px 0 14px; border-left:3px solid var(--accent); padding-left:10px;}
+  .swatches{display:flex; flex-wrap:wrap; gap:14px;}
+  .sw{width:150px; border:1px solid var(--hairline); background:var(--surface);}
+  .sw .chip{height:64px;}
+  .sw .meta{padding:8px 10px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--ink-muted);}
+  .sw .meta b{display:block; font-size:12px; font-family:Georgia,serif; letter-spacing:0; text-transform:none; color:var(--ink);}
+  .scale > div{margin:10px 0; border-bottom:1px solid var(--hairline); padding-bottom:10px;}
+  .display{font-size:72px; font-weight:300; line-height:1.05;}
+  .title{font-size:28px; font-weight:500;}
+  .body{font-size:13px; font-weight:400; line-height:1.6;}
+  .label{font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-muted);}
+  .data{font-size:14px; font-weight:500; font-variant-numeric:tabular-nums;}
+  .row{display:flex; gap:14px; align-items:center; margin:14px 0;}
+  .btn{border:1px solid var(--hairline); color:var(--ink); padding:10px 18px; font-size:13px; border-radius:2px; background:transparent;}
+  .btn-accent{background:var(--accent); color:var(--on-accent); border-color:var(--accent);}
+  .card{background:var(--surface); border:1px solid var(--hairline); padding:18px; max-width:340px;}
+  .card .stamp{font-family:ui-monospace,Menlo,monospace; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin-bottom:8px;}
+  .grid-sample{height:120px; background:var(--canvas);
+    background-image:linear-gradient(var(--hairline) 1px,transparent 1px),linear-gradient(90deg,var(--hairline) 1px,transparent 1px);
+    background-size:24px 24px; border:1px solid var(--hairline);}
+  footer{border-top:1px solid var(--hairline); margin-top:32px; padding-top:14px;
+    font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--ink-muted);}
+</style>
+</head>
+<body>
+  <div class="board">
+    <header><h1>静纸 · Dark Surface</h1><p class="phil">Still Paper — dark mode</p></header>
+    <h2>Color Palette & Roles</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:var(--canvas)"></div><div class="meta"><b>canvas</b>#141413 近黑底</div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface)"></div><div class="meta"><b>surface</b>#1F1B17 卡底</div></div>
+      <div class="sw"><div class="chip" style="background:var(--hairline)"></div><div class="meta"><b>hairline</b>#44403C 导轨</div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="meta"><b>ink</b>#EDE8E0 暖亮字</div></div>
+      <div class="sw"><div class="chip" style="background:var(--accent)"></div><div class="meta"><b>accent</b>#C96442 朱砂</div></div>
+    </div>
+    <h2>Typography Scale</h2>
+    <div class="scale">
+      <div class="display">文化中心</div>
+      <div class="title">区块标题</div>
+      <div class="body">衬线轻字重，左对齐、右侧自然流出。深底亮字对比用 APCA 复算。</div>
+      <div class="label">Label · 角标</div>
+      <div class="data">面积 12,480 m²</div>
+    </div>
+    <h2>Components</h2>
+    <div class="row"><span class="btn">次级</span><span class="btn btn-accent">强调</span></div>
+    <div class="card"><div class="stamp">Plate 01</div><div class="body" style="margin:0">暖墨双色调统一渲染图调性。</div></div>
+    <h2>Grid Rails</h2>
+    <div class="grid-sample"></div>
+    <footer>near-black #141413 · warm off-white #EDE8E0 · terracotta #C96442</footer>
+  </div>
+</body>
+</html>

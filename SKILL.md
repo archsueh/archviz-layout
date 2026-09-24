@@ -3,7 +3,7 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages).
 license: MIT
 metadata:
-  version: 1.1.1
+  version: 1.2.0
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh
@@ -40,7 +40,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 
 ## 建筑版式三套视觉语言 (Architectural Visual Languages)
 
-版式调性不只是表面的皮肤，而是项目内涵的表达介质。根据建筑方案的不同属性，应精准认领以下三套视觉语言之一来承载图面：
+版式调性不只是表面的皮肤，而是项目内涵的表达介质。根据建筑方案的不同属性，应精准认领以下四套视觉语言之一来承载图面：
 
 * **1. 静纸 (Still Paper) - 纸本手作风**
   - **适用项目**：文化中心、地标博物馆、住宅设计、城市微更新、景观与乡村规划。
@@ -51,6 +51,9 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 * **3. 图桥 (Bridge Canvas) - 电影表现力风**
   - **适用项目**：大型竞赛图纸首图、叙事性强的空间节点表现、大跨度公共空间、夜景/黄昏渲染氛围图。
   - **视觉配方**：纯黑或极深灰色背景（`#141413`）、全铺/跨栏无边框大图渲染（Hero Shot）、电影级宽银幕黑边（Cinematic Black Bars）视觉锚定，标题直接浮于大图暗部或大面积黑底中。渲染图色调采用**金绿双色调分离 (teal-gold split-tone)**，建立统一而富有戏剧性的影视画质。
+* **4. 技术蓝图 (Technical Blueprint) - 深色工程图幅风**（v1.2.0 新增）
+  - **适用项目**：技术图纸、构造大样、BIM/明细表、设备与管综、规范对照板等需要「工程控制台 / CAD 图幅」气质的板。
+  - **视觉配方**：深蓝图幅底（`#0D1B2A`）、青色 hairline 网格（`#2A4A6B`，线宽 ≤ 0.8px，隐约可见）、冷亮字（`#DBE7F0`）、唯一青色强调（`#5FD0E8`）、0 圆角方正组件、字重 600 封顶 + display 负字距、Mono 仅用于坐标/标高/章节眉标。层级靠 `canvas→surface` 三级表面抬升 + hairline 表达，无投影/渐变。与 signal-proof（轻量冷灰电蓝文档风）、bridge-canvas（黑底金绿电影风）明确区分。渲染图色调采用冷色工程签名。
 
 ---
 
@@ -62,7 +65,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
    - 彻底梳理建筑方案的核心立意、场地属性及图纸清单（如：共有 3 张效果图、1 个总平面图、2 个流线分析图、4 段说明）。
    - 识别排版限制（如：A0竖展板还是A3作品集横页；需要弱化分析图颜色以突出效果图；是否保留场地原有Logo等）。
 2. **第二步：风格定调 (Tune)**
-   - 根据项目类型，认领上述三套视觉语言之一（静纸/实证/图桥）。
+   - 根据项目类型，认领以下四套视觉语言之一（静纸/实证/图桥/技术蓝图）。
    - 确定本页/本展板的主色调，锁死调色板（Palette）与字体层级（Typography Rules），在后续生成中保持高度一致。
 3. **第三步：图面分页/分块 (Split)**
    - 对内容进行“叙事分页”或“图板区域划分”。
@@ -579,7 +582,7 @@ Checklist:
 
 ```
 [ ] 1. 确认输出媒介：A0 展板 / A4 作品集 / 社交卡片 / PDF 画册
-[ ] 2. 已认领三套视觉语言之一：静纸 / 实证 / 图桥（不混用）
+[ ] 2. 已认领四套视觉语言之一：静纸 / 实证 / 图桥 / 技术蓝图（不混用）
 [ ] 3. 锁定调色板与字体方案，且与项目性格一致
 [ ] 4. 资产清单已分级：Tier 1 焦点图 ≥ 35% 版面占比
 [ ] 5. 网格已定：分栏数 + 网格间距 + 外留白均已确定
@@ -622,6 +625,7 @@ Checklist:
 - `still-paper` — 静纸风格
 - `signal-proof` — 实证风格
 - `bridge-canvas` — 图桥风格
+- `blueprint` — 技术蓝图风格（v1.2.0 新增）
 
 **数据格式：**
 ```json
@@ -672,6 +676,22 @@ python3 scripts/render_board_with_charts.py \
 ---
 ## 版本变更（Changelog）
 
+### v1.2.0 — awesome-design-md 拆解补强：DESIGN.md 伴侣 + 视觉目录 + 第四套视觉语言（2026-09-24）
+**来源**：`VoltAgent/awesome-design-md`（MIT，73+ 真实 `DESIGN.md`，9 段式 token 规范）。本仓库提供的是**格式范本 + 真实 token 语料库**，而非可直接搬运的内容——其主体为通用 Web-UI 装饰套路，已被 v1.1.0「使用边界 OUT 列」明确排除。本次只取「格式骨架」与「同基因子集的真实 token 证据」，其余不采纳。
+
+**A 层 — DESIGN.md 伴侣（4 份，落 `design-md/<lang>/DESIGN.md`）**
+1. 为现有三套语言（still-paper / signal-proof / bridge-canvas）各补一份 9 段式 DESIGN.md 伴侣，把 Skill 里的散落 token 归一为单文件权威规范：Visual Theme / Color Palette & Roles / Typography Rules / Component Stylings / Layout Principles / Depth & Elevation / Do's & Don'ts / Responsive Behavior / Agent Prompt Guide。
+2. 新增第四套语言 **技术蓝图 Technical Blueprint** 的 DESIGN.md（navy `#0D1B2A` + cyan `#5FD0E8` hairline 网格），与 signal-proof（轻量冷灰电蓝文档）、bridge-canvas（黑底金绿电影）明确区分。
+
+**B 层 — 视觉目录 preview.html（8 份）**
+- 每套语言各 1 个 `preview.html`（token 色板/字阶/组件/网格导轨可视化目录）+ 1 个 `preview-dark.html`（跨表面可读性基线）。同时充当 `capture_rects.py` 的测试板。
+
+**C 层 — 第四套视觉语言 + 集成**
+1. SKILL.md：视觉语言表「三套」→「四套」，新增「技术蓝图」配方块；五步工作流 / Pre-Flight / 渲染支持列表同步加入 blueprint。
+2. `scripts/render_board_with_charts.py`：`VISUAL_LANGUAGES` 加入 blueprint；`--language` 选项开放 blueprint；新增 `CHART_PALETTES` 按语言分发的图表配色（blueprint 用 navy 安全的青/钢灰，避免暗色柱在深蓝底上消失）。
+
+**方法论结论（与 X 帖子判定一致）**：awesome-design-md 可拆解，但只取格式与同基因真实 token；通用 Web-UI 装饰套路仍排除。新 blueprint 的纪律（4/8px 模数、字重 ≤600 + 负字距、表面层级替代投影、1px hairline、单强调色、0 圆角、Mono 微标签）提炼自 Linear / Vercel / IBM Carbon / Supabase / HashiCorp 同基因子集。
+
 ### v1.1.0 — 全量补强（2026-09-24）
 **来源**：ckw-design-skill（`design-spatial` / `design-system` / `design-thinking`，MIT）、martinavila `skills/agent-skills/web-design` 网格配方（agency-grid-layout-minimal / image-first-grid-layout）。
 
@@ -683,6 +703,19 @@ python3 scripts/render_board_with_charts.py \
 5. **核心设计纪律 4–6**：评审基线（Name-on-It Bar）、留白即结构、冲击留给标点。
 6. **Pre-Flight B-18**：HTML 卡窄屏无横向溢出闸门 + `aspect-ratio` 防 CLS。
 7. **成图审计脚本** `scripts/audit_board.py`（零依赖纯标准库）：渲染截图 → 全分辨率墨密度重心（平衡 SIGNAL）+ 粗粒度局部对比 + 矩形模式（碰撞/对齐/间距/ WCAG 对比 GATES）+ 标注 SVG 叠加。把本循环的"可测量"从口头变成可跑工具。
+
+### v1.2.0 — DESIGN.md 伴侣 + 技术蓝图视觉语言（2026-09-24）
+**来源**：VoltAgent/awesome-design-md（MIT，73 个真实 DESIGN.md 集合）的**同基因子集**（IBM Carbon / Supabase / HashiCorp / Linear / Vercel）「精密技术网格」共性——4/8px 间距模数、字重 600 封顶 + 负字距、surface 层级替投影、1px hairline、单色灰阶 + 单一强调色、0 圆角、Mono 微标签。整批品牌 token 因属通用 Web-UI 装饰（archviz 已排除）而**未采纳**；仅借格式范式 + 同基因子集。
+
+**新增**
+1. **`design-md/` 目录**：为四套视觉语言各写一份 9 节 DESIGN.md 伴侣（静纸 / 实证 / 图桥 / 技术蓝图），把色板语义名+hex+角色、排版层级表、组件、布局、Do/Don't、Agent 提示固化成代理可读 token sheet。
+2. **`preview.html` + `preview-dark.html`**：每套语言的可视化目录（色板/字阶/按钮/卡片/hairline 网格），兼作 `capture_rects.py` 审计链路的可测展板——评图循环的视觉基线参照。
+3. **第四套视觉语言「技术蓝图 Technical Blueprint」**：深蓝图幅（`#0D1B2A`）+ 青色 hairline 网格（`#2A4A6B`）+ 唯一青色强调（`#5FD0E8`）+ 0 圆角方正 + 字重 600 封顶 + display 负字距 + Mono 技术标注。填补 archviz 缺的「技术图纸/构造详图深色板」，与 signal-proof（轻量冷灰电蓝）、bridge-canvas（黑底金绿电影）明确区分。接入 SKILL.md 视觉语言表与 `render_board_with_charts.py` 的 `VISUAL_LANGUAGES`。
+
+**显式未采纳（Deliberately Excluded）**
+- 73 个品牌里绝大多数（Binance 黄 / Shopify 霓虹绿 / Renault aurora 渐变 / Runway 电影暗黑 / Mastercard 奶油轨道药丸等）属通用 Web-UI 品牌官网视觉，与建筑展板印刷级 Swiss 极简领域错位，未搬入。
+
+---
 
 ### v1.1.1 — 一键抓取 + 审计精度修正（2026-09-24）
 **新增**

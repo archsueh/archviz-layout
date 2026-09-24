@@ -63,6 +63,14 @@ VISUAL_LANGUAGES = {
         "border": "#44403C",
         "font": "sans",
     },
+    "blueprint": {
+        "name": "技术蓝图 (Technical Blueprint)",
+        "bg": "#0D1B2A",
+        "text": "#DBE7F0",
+        "accent": "#5FD0E8",
+        "border": "#2A4A6B",
+        "font": "sans",
+    },
 }
 
 # Chart colors (from archviz-diagram)
@@ -74,6 +82,20 @@ CHART_COLORS = [
     "#c96442",  # Terracotta
     "#5e5d59",  # Warm Gray
 ]
+
+# Per-language chart palettes. Default falls back to CHART_COLORS.
+# Dark-surface languages (blueprint) need navy-safe colors so bars/marks
+# don't disappear into the deep background.
+CHART_PALETTES = {
+    "blueprint": [
+        "#5FD0E8",  # Cyan accent
+        "#A8C5D6",  # Light steel
+        "#6E93AD",  # Mid steel
+        "#C7D9E5",  # Ice
+        "#3E6A8A",  # Deep steel
+        "#9FB8C9",  # Pale steel
+    ],
+}
 
 SCALE = 2
 
@@ -153,8 +175,9 @@ def render_chart_in_layout(data, x, y, width, height, language="still-paper"):
         x_pos = margin + gap + i * (bar_width + gap)
         y_pos = margin + 40 + chart_height - bar_height
         
-        # Bar color
-        color = CHART_COLORS[i % len(CHART_COLORS)]
+        # Bar color (language-aware palette)
+        palette = CHART_PALETTES.get(language, CHART_COLORS)
+        color = palette[i % len(palette)]
         
         # Draw bar
         draw.rectangle(
@@ -275,7 +298,7 @@ def main():
                        choices=["a0-vertical", "a3-landscape", "social-3-4"],
                        help="Board template")
     parser.add_argument("--language", default="still-paper",
-                       choices=["still-paper", "signal-proof", "bridge-canvas"],
+                       choices=["still-paper", "signal-proof", "bridge-canvas", "blueprint"],
                        help="Visual language")
     parser.add_argument("--title", default="Project Title", help="Board title")
     parser.add_argument("--charts", nargs="+", help="Chart JSON files")
