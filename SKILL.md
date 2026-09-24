@@ -3,7 +3,7 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages).
 license: MIT
 metadata:
-  version: 1.1.0
+  version: 1.1.1
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh
@@ -470,7 +470,15 @@ h2.chapter-title::before {
 1. 起静态服务（`python3 -m http.server` 或 `npx serve`），用 Playwright headless 截图，**多宽度**（桌面 + 窄屏 ~390px / ~1024px）。
 2. **独立 judge 评图**：用一个**没写过这版**的 subagent 当裁判，命它专门找「错」——碰撞、边切线、参差对齐、失衡、无清晰焦点、某些宽度崩。
 3. 修 → 重渲 → 再评，直到 judge 找不到阻断级问题。
-4. **自动度量兜底**：跑 `scripts/audit_board.py --image board.png --rects rects.json` 直接算出墨密度重心（全分辨率）、碰撞、WCAG 对比，并生成带标注的 SVG 叠加图，给 judge 看「哪里」。矩形框从浏览器 devtools / Playwright 导出（见脚本 docstring）。纯标准库零依赖，任意机器可跑。
+4. **自动度量兜底（一键）**：用 `scripts/capture_rects.py` 直接吃 HTML 展板，Playwright headless 渲染 → 导出元素框 `rects.json`（坐标/色/底色/kind/large，与 audit 完全兼容）+ 裁到展板本体的截图 PNG，再链式 `--run-audit` 一把出全量报告 JSON + 标注 SVG 叠加图。零手工导矩形。
+   ```bash
+   # 一键：抓框 + 截图 + 跑 audit 出全量报告（含 SVG 标注）
+   python3 scripts/capture_rects.py --html board.html --out rects.json \
+       --screenshot board.png --run-audit --audit-out report.json --overlay overlay.svg
+   # 指定展板本体选择器（默认 .board / [data-board]；无匹配回退整页）
+   # 加 --width 1080 --height 1440 可固定海报尺寸
+   ```
+   `audit_board.py` 算：全分辨率墨密度重心（平衡 SIGNAL，x=0.50/y≈0.46，接受 ±0.03/±0.04）+ 矩形 GATES（碰撞 ≥12% 交叠、WCAG 对比）+ 对齐/间距 SIGNAL；碰撞检查跳过父子嵌套（只留同级部分交叠），底色相同的冗余 wrapper 在抓取端去重。纯标准库零依赖，任意机器可跑；`capture_rects.py` 仅额外需要 `pip install playwright && playwright install chromium`。
 
 ### 3. 可测量视觉平衡（不靠 VLM 猜）
 视觉重量 = 面积 × 墨密度（同面积不同重：实心黑标题重，灰/ASCII/亮图轻，正文稀疏）。重心目标：光学中心 `x = 0.50`，`y ≈ 0.46`（略高，几何正中会读成下坠）。
@@ -675,6 +683,16 @@ python3 scripts/render_board_with_charts.py \
 5. **核心设计纪律 4–6**：评审基线（Name-on-It Bar）、留白即结构、冲击留给标点。
 6. **Pre-Flight B-18**：HTML 卡窄屏无横向溢出闸门 + `aspect-ratio` 防 CLS。
 7. **成图审计脚本** `scripts/audit_board.py`（零依赖纯标准库）：渲染截图 → 全分辨率墨密度重心（平衡 SIGNAL）+ 粗粒度局部对比 + 矩形模式（碰撞/对齐/间距/ WCAG 对比 GATES）+ 标注 SVG 叠加。把本循环的"可测量"从口头变成可跑工具。
+
+### v1.1.1 — 一键抓取 + 审计精度修正（2026-09-24）
+**新增**
+1. **`scripts/capture_rects.py`（Playwright）**：HTML 展板 → 一键导出元素框 `rects.json` + 裁到展板本体的截图 PNG，并支持 `--run-audit` 链式出全量报告 + 标注 SVG。省去人工从 devtools 导矩形（`audit_board.py` 仍零依赖）。
+2. **`--board` 展板裁剪**：截图只取 `.board` / `[data-board]` 本体并做坐标偏移，平衡/对比只在展板内衡量，不被画布留白带偏。
+3. **示例展板 `examples/board-sample.html`（still-paper 干净样本）与 `examples/board-stress.html`（触发器验证夹具，埋低对比/交叠/错位三类问题）**。
+
+**审计精度修正（audit_board.py）**
+- 碰撞 GATE 跳过父子嵌套（一个完整包住另一个），只留同级部分交叠 → 消除容器包子文本的大规模误报。
+- 抓取端 dedup 仅删除「底色相同且被覆盖 ≥92%」的冗余 wrapper，保留有独立底色的卡片/列/图版（hero/aside/plate/列等）。
 
 **显式未采纳（Deliberately Excluded）**
 - 通用 Web-UI 装饰套路（重投影 / 材质阴影 / 渐变网格 / 玻璃拟态 / SEO / 爬虫）：与 Swiss 极简网格相悖，已在「使用边界」OUT 列排除。

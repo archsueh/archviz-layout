@@ -124,6 +124,13 @@ def wcag_ratio(rgb1, rgb2):
     return (lighter + 0.05) / (darker + 0.05)
 
 
+def _contains(outer, inner, tol=1):
+    """outer 是否完整包住 inner（父子嵌套，非真实碰撞）。"""
+    return (inner["x"] >= outer["x"] - tol and inner["y"] >= outer["y"] - tol and
+            inner["x"] + inner["w"] <= outer["x"] + outer["w"] + tol and
+            inner["y"] + inner["h"] <= outer["y"] + outer["h"] + tol)
+
+
 def _detect_bg(width, height, channels, pixels):
     # 采样外圈 4px 环，量化到 /16 取众数，再返回该众数组的真实均值色（避免取整误差）
     from collections import Counter
@@ -254,6 +261,9 @@ def audit_rects(rects):
             ix2 = min(a["x"] + a["w"], b["x"] + b["w"])
             iy2 = min(a["y"] + a["h"], b["y"] + b["h"])
             if ix2 <= ix or iy2 <= iy:
+                continue
+            # 父子嵌套（一个完整包住另一个）不算碰撞，只留同级部分交叠
+            if _contains(a, b) or _contains(b, a):
                 continue
             overlap = (ix2 - ix) * (iy2 - iy)
             mn = min(a["w"] * a["h"], b["w"] * b["h"])

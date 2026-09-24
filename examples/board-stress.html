@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STRESS FIXTURE — 审计触发器验证</title>
+<style>
+  :root{ --bg:#F5F4ED; --text:#141413; --border:#C9C7BC; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:Georgia,serif;}
+  .board{max-width:900px; margin:0 auto; padding:60px; position:relative;}
+  .tag{display:inline-block; background:#141413; color:#fff; font-size:12px;
+    letter-spacing:0.2em; padding:6px 12px; text-transform:uppercase;}
+
+  /* 问题 1：低对比文本（浅灰 on 浅底，WCAG 应 fail） */
+  .faint{color:#b8b4a8; font-size:15px; line-height:1.6; margin:24px 0;}
+
+  /* 问题 2：元素交叠 ≥12%（碰撞 GATE 应触发） */
+  .overlap-stage{position:relative; height:200px; margin:24px 0; border:1px solid var(--border);}
+  .box-a{position:absolute; left:40px; top:40px; width:220px; height:120px; background:#2b2a27;}
+  .box-b{position:absolute; left:120px; top:90px; width:220px; height:120px; background:#c96442;}
+
+  /* 问题 3：同排两块的 3px 错位 + 重叠（同时触发 alignment SIGNAL 与 collision GATE） */
+  .row{position:relative; height:60px; margin:24px 0;}
+  .col-x{position:absolute; left:40px; top:0; width:180px; height:40px; background:#5e5d59;}
+  .col-y{position:absolute; left:43px; top:0; width:180px; height:40px; background:#94a3b8;}
+
+  h2{font-size:28px; margin:32px 0 8px;}
+  p.note{font-size:14px; color:#5e5d59;}
+</style>
+</head>
+<body>
+  <div class="board">
+    <span class="tag">Stress Fixture · 仅用于验证审计触发器</span>
+
+    <h2>对比度闸门</h2>
+    <p class="faint">这段浅灰文字在浅米底色上，WCAG 正文对比应低于 4.5:1，被 contrast-wcag GATE 捕获。</p>
+
+    <h2>碰撞闸门</h2>
+    <div class="overlap-stage">
+      <div class="box-a"></div>
+      <div class="box-b"></div>
+    </div>
+
+    <h2>对齐信号</h2>
+    <div class="row">
+      <div class="col-x"></div>
+      <div class="col-y"></div>
+    </div>
+
+    <p class="note">此文件是审计工具的功能验证夹具，非真实展板。</p>
+  </div>
+</body>
+</html>
