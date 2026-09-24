@@ -298,16 +298,18 @@ def audit_rects(rects):
 
     # 对齐（SIGNAL）：同排文本/box 左缘近距 miss（1–7px）
     near_miss = []
-    lefts = sorted([(e["x"], e["y"], e["h"]) for e in elems])
-    for i in range(len(lefts)):
-        for j in range(i + 1, len(lefts)):
-            xi, yi, hi = lefts[i]
-            xj, yj, hj = lefts[j]
+    for i in range(len(elems)):
+        for j in range(i + 1, len(elems)):
+            a, b = elems[i], elems[j]
+            # 跳过父子嵌套（包装盒与其子元素左缘本就重合，非真实错位）
+            if _contains(a, b) or _contains(b, a):
+                continue
             # 同排：y 区间重叠
-            if yj < yi + hi and yi < yj + hj:
-                d = abs(xi - xj)
-                if 1 <= d <= 7:
-                    near_miss.append({"a": xi, "b": xj, "delta": d})
+            if not (b["y"] < a["y"] + a["h"] and a["y"] < b["y"] + b["h"]):
+                continue
+            d = abs(a["x"] - b["x"])
+            if 1 <= d <= 7:
+                near_miss.append({"a": a["x"], "b": b["x"], "delta": d})
     checks.append({
         "name": "alignment", "tier": "SIGNAL",
         "count": len(near_miss), "pass": len(near_miss) == 0,
