@@ -3,11 +3,11 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages).
 license: MIT
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh
-  triggers: presentation board, portfolio layout, competition drawing, board polish, readiness audit, grid system, 展板, 作品集, 排版, 建筑可视化, architectural layout
+  triggers: presentation board, portfolio layout, competition drawing, board polish, readiness audit, grid system, 渲染评图, 视觉平衡, 对比度闸门, 展板, 作品集, 排版, 建筑可视化, architectural layout
 ---
 
 # Architectural Visualization Presentation Layout (Archviz-Layout)
@@ -32,6 +32,9 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 3. **适当性原则 (Appropriateness)**：版式调性必须与建筑项目性格匹配。
    * *粗野主义/工业项目*：刚性灰色表面，大网格，强对比，使用大字重无衬线体。
    * *文化/艺术/住宅项目*：白色或暖纸色表面，宽留白，细网格，配以优雅的衬线体标题。
+4. **评审基线 (The Name-on-It Bar)**：成图前自问「我愿不愿意把名字署在这张板上？」—— 判据不是「能不能用」，而是「是否 unambiguously intentional & crafted」。落版后**强制跑第六节「渲染评图循环」**，而非只看代码或清单自查（模型看不到自己画的像素）。
+5. **留白即结构 (Negative Space as Structure)**：建筑语境下空白是秩序的一部分，不是剩余废料。动线（Flowline）、材料与光的暗示、入口/转场（Threshold）都应当被**显式设计**为「穿越 moment」，而非顺手留白。这与「空气泡原则」同源但更主动：留白要有理由，要么承托 Tier 1 的呼吸，要么是页眉/页脚的 whitespace 控制。
+6. **冲击留给标点 (Reserve Impact for Punctuation)**：全版只允许 1–2 处「放大」—— Hero 透视、一处饱和强调色、或一个签名式动势。其余一切保持安静收敛，大 moment 才读得出力道；满版强度 = 平。这与「视觉冲击力（尺度对比，非颜色繁多）」互为表里。
 
 ---
 
@@ -96,6 +99,30 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 
 ---
 
+## 网格导轨与构图范式 (Grid Rails & Composition Patterns)
+
+网格是骨架，但骨架可以「可见」也可以「隐于内容」。本节能从通用网页网格体系（editorial / image-first）移植的，是**把秩序画出来**与**让图当舞台**两件事——它们与瑞士网格同源，但更强调结构的可感知性。
+
+### 1. 结构导轨 (Structural Guide Lines)
+* 在版面上**显式画出**外框轨（Outer Rails）、中轴导引线（Center Guides）、四角标记（Corner Markers），给无形状的白色区域一个可依附的秩序骨架。
+* **克制优先**：导轨线宽 ≤ `0.8px`、色号取网格线同族（`#D6D3D1` / `#44403C`），不抢内容；它们的作用是「让结构 quietly organize」，不是装饰。
+* 与「光学对齐」呼应：导轨是几何基准，眼睛是最终裁判——测量齐了但若看着偏，仍要手动 ±1–2px 光学微调。
+
+### 2. 图为主舞台 (Image-as-Stage)
+* Tier 1 Hero / 图桥语言的大图应被当作**舞台（Stage）**：整幅渲染图铺底占据绝大多数画幅，网格与文字块只是浮在其上的 overlay 结构。
+* 在图上叠一层**安静的网格系统**（竖向容器线 / 中轴导引 / 分栏 scaffold），可见但克制；主标题与 CTA/图名锚定在某一网格栏，次级信息盒（引用 / 指标 / 叙事）落在相邻栏。
+* **绝不**把大图降级成角落缩略图或卡片缩略——图是主角，结构是配角。
+
+### 3. 底部锚定 Hero + 邻栏次信息 (Bottom-Anchored Hero)
+* Hero 文案与项目名**锚定在版面下部或某条明确边线**，而非永远居中；次级 box（引用 / 证言 / 指标 / 支撑叙事）浮在相邻网格车道，保留强负空间。
+* 这避免「居中单栏 mush」——中轴对齐是瑞士网格的利器，但**持续居中**会读成平均化、无主张。
+
+### 4. 服务行列表 (Service-Row Listings)
+* Tier 3 工程图 / 技术大样 / 指标行，应以**干净的多栏清列**呈现：极小 metadata（标高 / 比例 / 图号）+ 强标题 + 克制的交互态，而非卡片堆叠。
+* 与「空气泡原则」结合：成组排列时外边线严格对齐网格边缘，图纸间距一致，组间留白即结构。
+
+---
+
 ## 视觉层级与资产排布 (Hierarchy & Asset Mapping)
 
 ### 1. 资产等级划分 (Asset Priority)
@@ -137,6 +164,10 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
   - 正文与标注：`9pt`
 * *排印规则*：**标题字重尽量轻（Light/Medium），正文及标注字重相对适中**。正文排版一律采用**左对齐、右侧自然流出 (Flush-left, ragged-right)**，绝对禁止强制两端对齐以避免出现不自然的单词空隙。
 
+### 3. 层级清晰铁律（眯眼测试）
+* 整张板在**眯眼或退远**状态下，标题与正文必须一眼可分——若分不出，层级过弱（不是字号不够，是字重/对比/面积反差没拉开）。
+* 技术图纸的标高、面积、坐标等**数据**一律 `tabular-nums` 等宽数字对齐成列；**仅当数值真成列对齐时用 Mono**，禁止把 Mono 当装饰微标签（伪技术 caption 如 `35MM · DEVELOP · SCAN`）——那是无语义 trend-slop，与瑞士克制相悖。
+
 ---
 
 ## 色彩与灰度控制 (Color Palette)
@@ -153,6 +184,12 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 ### 2. 灰度适配 (Value Tuning)
 * **日景主题展板**：底色 `#FFFFFF` 或 `#F5F5F4`，文字 `#111111`，边框线 `#D6D3D1`（低对比，高雅）。
 * **夜景/特定叙事展板**：底色 `#141413`（深色），文字 `#E8E4E0`，边框 `#44403C`，渲染图边框使用微发光或无边界融入。
+
+### 3. 对比度闸门（WCAG 地板 + APCA 感知）
+色彩对比不是「看着清楚就行」，必须有可测量的判据：
+* **WCAG 2 作为合规地板**：正文文本对比 ≥ `4.5:1`，大字号（≥ `18pt` 或 `14pt` bold）≥ `3:1`。这是可访问性硬门槛，也是展板退远 2m 与手机缩略预览的双重底线。
+* **APCA 用于感知设计**：WCAG 比率对深底亮字、中间调灰阶误判严重。做图桥语言（深底亮字）或灰阶层次时，用 **APCA**（apcacontrast.com）按感知亮度决策，而非 WCAG 比值。
+* **实测，不口述**：落版核验（第五步 Verify 与 Meng-style Polish）必须取版面主文与底色算对比、标注数值（如 `APCA Lc 78` / `WCAG 7.2:1`），禁止只写「够清楚」。
 
 ---
 
@@ -422,6 +459,39 @@ h2.chapter-title::before {
 
 ---
 
+## 成图渲染评图循环（Render-then-Critique Vision Loop）
+
+> 移植自 ckw-design-skill `design-spatial` 的「模型看不到自己画的像素」命题，改写为建筑展板语境。这是第五节 Verify 的**强制前置**——落版后、跑 Meng-style 皮面前，必须先 render 成图、用独立 judge 评图。
+
+### 1. 为什么必须 render
+展板以 HTML/CSS（或 SVG）产出，模型生成的是 token 流不是像素——它看不到碰撞、边切线（edge tangent）、失衡、错位间距。它会写出压住 Hero 的标题而毫无察觉。**渲染成图，评的是图，不是代码，更不是自评。**
+
+### 2. 流程
+1. 起静态服务（`python3 -m http.server` 或 `npx serve`），用 Playwright headless 截图，**多宽度**（桌面 + 窄屏 ~390px / ~1024px）。
+2. **独立 judge 评图**：用一个**没写过这版**的 subagent 当裁判，命它专门找「错」——碰撞、边切线、参差对齐、失衡、无清晰焦点、某些宽度崩。
+3. 修 → 重渲 → 再评，直到 judge 找不到阻断级问题。
+4. **自动度量兜底**：跑 `scripts/audit_board.py --image board.png --rects rects.json` 直接算出墨密度重心（全分辨率）、碰撞、WCAG 对比，并生成带标注的 SVG 叠加图，给 judge 看「哪里」。矩形框从浏览器 devtools / Playwright 导出（见脚本 docstring）。纯标准库零依赖，任意机器可跑。
+
+### 3. 可测量视觉平衡（不靠 VLM 猜）
+视觉重量 = 面积 × 墨密度（同面积不同重：实心黑标题重，灰/ASCII/亮图轻，正文稀疏）。重心目标：光学中心 `x = 0.50`，`y ≈ 0.46`（略高，几何正中会读成下坠）。
+- **接受准则**：`|centroid_x − 0.50| < 0.03` 且 `|centroid_y − 0.46| < 0.04`，左右/上下不平衡度低。
+- **修复靠 see-saw**：加重对立元素 > 拉大对立面积 > 把重物内移（缩短力臂）> 缩小重物（最后手段）。
+
+### 4. 闸门 vs 信号纪律（最关键，防过度纠正）
+| 类别 | 检查 | 性质 |
+|---|---|---|
+| **GATES（正确性）** | 碰撞 ≥12% 交叠、对比 WCAG（见色彩 §3）、横向溢出 `scrollWidth−clientWidth = 0`、tap ≥44×44 | 事实缺陷，**可硬挡** |
+| **SIGNALS（约定）** | 平衡、对齐节律、间距节奏（CoV） | 对称/规整美学，**不可为追分而过度纠正** |
+
+- **GATES 是必要非充分**：全过只说明过了确定性地板，不代表好看；门后仍需 §2 的 fresh-eyes 评判与品牌契合。
+- **SIGNALS 是指针不是裁决**：刻意的偏离对称、刻意重叠、表现性节奏，往往是版面上最好的东西。信号与有趣选择冲突时，**有趣选择通常赢**——别把展板「修」成平均。
+- **绝不一票未看就改**：flag 是指向「去看」的指针；看了标注图再决定。
+
+### 5. 与 Meng-style 的分工
+本循环 = 成图前强制 render 评图（结构 / 碰撞 / 平衡 / 对比）；Meng-style = 成图后反 AI 味皮面（字距 / 伪影 / human detail）。**先过本循环，再过 Meng-style**；本循环 judge 找不到阻断级问题，才进 Meng-style。
+
+---
+
 ## Meng-style Board Polish（成图核校增强层）
 
 > 原则：网格与三套视觉语言是主干；本节只补 **最后 10% 反 AI 味**。灵感移植自 Meng To 落地页 critique（字距、真实图、伪影、human detail），已改写为建筑展板/作品集/社交卡语境。  
@@ -491,6 +561,7 @@ Checklist:
 | 分析图排版与图表类型路由 | 纯信息图表 HTML 生成 → `archviz-diagram` |
 | 社交卡片/印刷 PDF/CSS Paged Media | 网站前端工程实现 → `frontend-design` |
 | AI 渲染品牌一致性管线 | 代码级 SVG 动画 → `threejs-*` |
+| — | 通用 Web-UI 装饰（重投影 / 材质阴影 / 渐变网格 / SEO / 爬虫）→ 反 Swiss 网格，已显式排除 |
 
 ## 执行前检查清单 (Pre-Flight Checklist)
 
@@ -523,6 +594,7 @@ Checklist:
 [ ] 15. Human detail：恰好 1–2 处项目专属细节（非随机装饰）
 [ ] 16. 媒介：印刷灰阶 / 3:4≥75% / 9:16 安全区 已按输出媒介核过
 [ ] 17. 已输出 Board readiness 块（Ready / Needs polish / Not ready + Top fixes）
+[ ] 18. HTML 卡无溢出：窄屏（≤390px / ~1024px）实测 `scrollWidth − clientWidth = 0`；媒体盒 `aspect-ratio` 预留防 CLS（仅社交/网页卡适用，印刷 PDF 忽略）
 ```
 
 ---
@@ -590,4 +662,24 @@ python3 scripts/render_board_with_charts.py \
 > **规则**：Display vs Body 比例维持在 **2:1 到 7:1**；Body vs Caption 比例维持在 **1.2:1 到 1.5:1**。Display 字重一律轻，严禁粗体标题。
 
 ---
+## 版本变更（Changelog）
+
+### v1.1.0 — 全量补强（2026-09-24）
+**来源**：ckw-design-skill（`design-spatial` / `design-system` / `design-thinking`，MIT）、martinavila `skills/agent-skills/web-design` 网格配方（agency-grid-layout-minimal / image-first-grid-layout）。
+
+**新增 / 增强**
+1. **渲染评图循环（Render-then-Critique）**：落版后强制 render 成图、独立 judge 评图（非自评）；可测量视觉平衡（墨密度重心 x=0.50 / y≈0.46，接受 ±0.03/±0.04）；GATES vs SIGNALS 纪律，防过度纠正成平均。
+2. **对比度闸门**：WCAG 2 作合规地板（正文 4.5:1 / 大字 3:1）+ APCA 作感知设计判据，落版实测数值。
+3. **网格导轨与构图范式**：结构导轨（外框轨 / 中轴导引 / 角标）、图为主舞台、底部锚定 Hero、服务行列表。
+4. **字体层级清晰铁律**：眯眼测试 + 数据 `tabular-nums` 等宽对齐；禁止 Mono 当装饰微标签（trend-slop）。
+5. **核心设计纪律 4–6**：评审基线（Name-on-It Bar）、留白即结构、冲击留给标点。
+6. **Pre-Flight B-18**：HTML 卡窄屏无横向溢出闸门 + `aspect-ratio` 防 CLS。
+7. **成图审计脚本** `scripts/audit_board.py`（零依赖纯标准库）：渲染截图 → 全分辨率墨密度重心（平衡 SIGNAL）+ 粗粒度局部对比 + 矩形模式（碰撞/对齐/间距/ WCAG 对比 GATES）+ 标注 SVG 叠加。把本循环的"可测量"从口头变成可跑工具。
+
+**显式未采纳（Deliberately Excluded）**
+- 通用 Web-UI 装饰套路（重投影 / 材质阴影 / 渐变网格 / 玻璃拟态 / SEO / 爬虫）：与 Swiss 极简网格相悖，已在「使用边界」OUT 列排除。
+- X 帖子（@kail_designs）所列 `beautiful-shadows` / `apple-design` / `frontend-design` 等通用 Web-UI skill：经判定为通用产品界面技能，与建筑展板垂直领域错位，不能用于全量优化本系列（详见会话判定）。其真正可迁移的 2–3 点（评图流程 / 极简纪律 / 品牌一致）已由 ckw 来源以更严版本覆盖。
+
+---
+
 *“理性的网格是空间叙事的骨架，克制的色谱是视觉高贵的来源。”*
