@@ -38,7 +38,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 
 ---
 
-## 建筑版式三套视觉语言 (Architectural Visual Languages)
+## 建筑版式四套视觉语言 (Architectural Visual Languages)
 
 版式调性不只是表面的皮肤，而是项目内涵的表达介质。根据建筑方案的不同属性，应精准认领以下四套视觉语言之一来承载图面：
 
@@ -505,7 +505,7 @@ h2.chapter-title::before {
 
 ## Meng-style Board Polish（成图核校增强层）
 
-> 原则：网格与三套视觉语言是主干；本节只补 **最后 10% 反 AI 味**。灵感移植自 Meng To 落地页 critique（字距、真实图、伪影、human detail），已改写为建筑展板/作品集/社交卡语境。  
+> 原则：网格与四套视觉语言是主干；本节只补 **最后 10% 反 AI 味**。灵感移植自 Meng To 落地页 critique（字距、真实图、伪影、human detail），已改写为建筑展板/作品集/社交卡语境。  
 > **不引入**落地页专属项：CTA 文案、hover 微交互、SaaS marketing 套路。社交 HTML 卡允许极轻量 reveal/hover，印刷展板一律忽略。
 
 ### 1. 修复优先级（高 → 低）
@@ -559,7 +559,7 @@ Checklist:
 
 | 层 | 负责 | 不负责 |
 |---|---|---|
-| **主干**（网格 / 三套语言 / Tier / 五步流程） | 结构、叙事动线、调性认领 | 细部字距与伪影清单 |
+| **主干**（网格 / 四套语言 / Tier / 五步流程） | 结构、叙事动线、调性认领 | 细部字距与伪影清单 |
 | **Meng-style polish**（本节） | 成图后反 AI 味、readiness 判决 | 改网格分栏、换视觉语言、做 3D 渲染 |
 
 ---
@@ -689,6 +689,13 @@ python3 scripts/render_board_with_charts.py \
 **C 层 — 第四套视觉语言 + 集成**
 1. SKILL.md：视觉语言表「三套」→「四套」，新增「技术蓝图」配方块；五步工作流 / Pre-Flight / 渲染支持列表同步加入 blueprint。
 2. `scripts/render_board_with_charts.py`：`VISUAL_LANGUAGES` 加入 blueprint；`--language` 选项开放 blueprint；新增 `CHART_PALETTES` 按语言分发的图表配色（blueprint 用 navy 安全的青/钢灰，避免暗色柱在深蓝底上消失）。
+
+**验证与回头修（用本 Skill 自己的审计链路自查样本）**
+- 8 份 preview（4 语言 × 明暗两表面）全跑 `capture_rects.py --run-audit`，最终 **collision / contrast-wcag / alignment 三项全 0 PASS**。
+- 审计回头抓出两个真缺陷并已修：
+  1. **中间调强调色的双向陷阱**（still-paper 朱砂 `#C96442`）：浅底强调文字仅 3.54:1；且**正反压字都不达标**——浅字压朱砂同样 3.54:1。解法分表面：浅面用压深 `accent-ink #8A3A22`（7.05:1，文字）或朱砂填充配深字 `ink`（4.73:1，按钮）；**暗面必须反向提亮**为 `#E07A54`（朱砂在 `#1C1B18` 上只有 4.41:1，压深会更糟）。
+  2. **alignment SIGNAL 误报**：包装盒与其子元素左缘本就重合，被判为「近距错位」。已与 collision GATE 对齐，同样跳过父子嵌套（`36d58dd`）。
+- 结论：把 DESIGN.md 伴侣写成可跑的 preview，再用审计链路回头验，能抓出「只看 token 表看不出」的跨表面对比缺陷——这就是 B 层存在的理由，不只是好看的目录。
 
 **方法论结论（与 X 帖子判定一致）**：awesome-design-md 可拆解，但只取格式与同基因真实 token；通用 Web-UI 装饰套路仍排除。新 blueprint 的纪律（4/8px 模数、字重 ≤600 + 负字距、表面层级替代投影、1px hairline、单强调色、0 圆角、Mono 微标签）提炼自 Linear / Vercel / IBM Carbon / Supabase / HashiCorp 同基因子集。
 
