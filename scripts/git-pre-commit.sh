@@ -18,5 +18,7 @@ python3 "$ROOT/scripts/check_archviz.py"
 echo "Checking consistency kit's own checker..."
 python3 "$ROOT/scripts/check_archviz.py" --self-test >/dev/null
 
-echo "Byte-compiling scripts..."
-python3 -m compileall -q "$ROOT/scripts"
+# Byte-compilation used to be its own `compileall -q "$ROOT/scripts"` step here.
+# It is now the kit's `pycompile` check, which walks the whole repo instead of
+# one directory and uses the builtin `compile()`, so it leaves no `__pycache__`
+# in the tree it inspects.

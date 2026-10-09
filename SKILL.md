@@ -3,7 +3,7 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages). Designs in one of 4 套视觉语言（visual languages）：静纸 (Still Paper) / 实证 (Signal Proof) / 图桥 (Bridge Canvas) / 技术蓝图 (Technical Blueprint) — claimed per project, never mixed.
 license: MIT
 metadata:
-  version: 1.4.1
+  version: 1.4.2
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh

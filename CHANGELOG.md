@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.4.2 (2026-10-09)
+
+### Changed
+
+- **套件 `KIT_VERSION` 1 → 2，本仓新增 `pycompile` 检查段。** 递归扫全仓 `.py`，用内建
+  `compile()`，**不往工作树写 `__pycache__`**。此前 CI/hook 的 `compileall -q scripts`
+  只覆盖 `scripts/`，看不到 `examples/` 与 `templates/python/` —— 全族唯一的坏文件正好
+  在 `examples/` 里（archviz-diagram 的 `deliverables-python-bar.py`），也就是这个窄口径
+  放过去的。
+- **`deps` 增加反方向核对**：声明了但没有任何代码 import 的依赖会失败，豁免必须写进
+  `deps.unused_exempt` 并说明理由。
+- CI 与 pre-commit 的 `compileall` 步骤移除（由套件 `pycompile` 接管）；注释里写死的
+  检查条数删掉，改成指向 `python3 scripts/check_archviz.py --list`。
+- `coverage` 与 `cjk.scan` 的 glob 改为 `references/**/*.md`（本仓 `references/` 无子
+  目录，行为不变，只是口径与家族其余四仓对齐）。
+
+本版本无 SKILL.md 内容改动，仅版本号与工具链。
+
 ## 1.4.1 (2026-10-09)
 
 ### Changed
