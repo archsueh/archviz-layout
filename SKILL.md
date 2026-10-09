@@ -239,6 +239,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 | 生成 AI 渲染图，要在图上压字或放品牌标志 | `references/ai-asset-rendering-pipeline.md` | 1/3 文字避让区构图、品牌标志两步锁定管线、无头渲染字体降级与光学对齐纠偏 |
 | 排长篇技术报告 / 白皮书 / 印刷级文本 | `references/warm-paper-document-design.md` | 纸本视觉基调（Kami）、对齐与微间距纪律、参数化沟通协议 |
 | 画分析图 / 流程图 / 教学式图板，要选图表类型 | `references/educational-boards-schematic-grammar.md` | 画板优先于卡片、语义化元素与线条分级、**图表类型自动路由表** |
+| 交付前自检 | `references/design-judgment.md` | 五段判断链 / 六维度 / 选模型路由 / 三条硬边界 |
 
 ---
 

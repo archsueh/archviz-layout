@@ -37,6 +37,18 @@
       "assertions": [
         { "file": "SKILL.md", "regex": "延伸规范（共\\s*(\\d+)\\s*个文件）" }
       ]
+    },
+    {
+      "id": "reference_index_rows",
+      "truth": {
+        "kind": "markdown_table_rows",
+        "file": "SKILL.md",
+        "section": "延伸参考 (Extended References)",
+        "entry": "^\\|.*references/[a-z0-9-]+\\.md"
+      },
+      "assertions": [
+        { "file": "SKILL.md", "regex": "延伸规范（共\\s*(\\d+)\\s*个文件）" }
+      ]
     }
   ],
 
