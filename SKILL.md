@@ -3,7 +3,7 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages). Designs in one of 4 套视觉语言（visual languages）：静纸 (Still Paper) / 实证 (Signal Proof) / 图桥 (Bridge Canvas) / 技术蓝图 (Technical Blueprint) — claimed per project, never mixed.
 license: MIT
 metadata:
-  version: 1.4.0
+  version: 1.4.1
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh
@@ -230,7 +230,7 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 
 ## 延伸参考 (Extended References)
 
-以下内容属于**按需查阅**的延伸规范（共 5 个文件），不随 SKILL.md 一起加载 —— 遇到对应场景时再读 `references/` 下的文件。**闸门、设计纪律、五步工作流、Pre-Flight 与使用边界全部在本文件内，不在下面这些文件里。**
+以下内容属于**按需查阅**的延伸规范（共 6 个文件），不随 SKILL.md 一起加载 —— 遇到对应场景时再读 `references/` 下的文件。**闸门、设计纪律、五步工作流、Pre-Flight 与使用边界全部在本文件内，不在下面这些文件里。**
 
 | 何时读 | 文件 | 内容 |
 |---|---|---|
@@ -479,3 +479,9 @@ python3 scripts/render_board_with_charts.py \
 ---
 
 *“理性的网格是空间叙事的骨架，克制的色谱是视觉高贵的来源。”*
+
+<!-- design-judgment-integration -->
+## 交付前自检 (Post-Generation Design Judgment)
+
+交付前必须跑 `design-judgment` 技能的五段判断链做自检，不要只交付「技术上成功的第一稿」——
+完整规则（五段链 / 六维度 / 选模型路由 / 三条硬边界）见 [`references/design-judgment.md`](references/design-judgment.md)。
