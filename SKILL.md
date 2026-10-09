@@ -3,7 +3,7 @@ name: archviz-layout
 description: Use when designing architectural visualization presentation boards, portfolio layouts, competition drawings, and organizing visual assets (renderings, drawings, diagrams) into clean grid systems. Also use for pre-delivery board polish — typography/tracking, real project imagery, AI render artifacts, narrative specificity, and Board readiness audit (Meng-style, adapted for archviz — not marketing landing pages). Designs in one of 4 套视觉语言（visual languages）：静纸 (Still Paper) / 实证 (Signal Proof) / 图桥 (Bridge Canvas) / 技术蓝图 (Technical Blueprint) — claimed per project, never mixed.
 license: MIT
 metadata:
-  version: 1.3.0
+  version: 1.4.0
   source: https://github.com/archsueh/archviz-layout
   risk: safe
   author: archsueh
@@ -228,219 +228,17 @@ Archviz-Layout（建筑表现与图面设计）是融汇**画面叙事（Narrati
 
 ---
 
-## 社交与编辑性卡片排版 (Social & Editorial Card Layouts)
+## 延伸参考 (Extended References)
 
-当需要将建筑项目、图纸及分析结论生成可在社交平台（小红书、微信、B站、抖音）分享的轻量卡片或精致电子画册时，必须严格遵守以下卡片排版系统规范，杜绝“AI 生成味”的廉价排版（如 Tailwind 大色块堆砌、emoji 滥用）。
+以下内容属于**按需查阅**的延伸规范（共 5 个文件），不随 SKILL.md 一起加载 —— 遇到对应场景时再读 `references/` 下的文件。**闸门、设计纪律、五步工作流、Pre-Flight 与使用边界全部在本文件内，不在下面这些文件里。**
 
-### 1. 社交卡片黄金尺寸与安全区 (Dimensions & Safety Zones)
-* **横版封面 (16:9 / 2.35:1)**：B站/YouTube 封面（1280×720）或微信公众号首图（900×383）。采用**非对称构图**：左侧 2/3 放置特大项目名与副标题，右侧 1/3 放置裁剪精准的透视渲染图。
-* **竖版内容卡 (3:4 / 4:5)**：小红书/微信视频号（1080×1440）。
-  - *Editorial Artifact 模式*：卡面使用 Parchment 浅底，周围有一圈细淡的虚线或实线分割网格，像一页精致的实体建筑杂志。
-  - *Dark Magazine Cover 模式*：深色背景（`#141413`），中心放大项目名或单张夜景渲染，配以单个亮红色（Terracotta）强调词。
-  - *Flomo Note Card (便签手记) 模式*：深色背景（`#1e1e1e` 或 `#141413`），非常适合分享简短想法、书签链接、设计随笔或工具清单。视觉构成包括：
-    * **左上角**：Display Quote Mark 装饰性双引号（色号 `#ebd5b3` 或 `--tc`）。
-    * **右上角**：署名与日期（Mono 字体，`font-size: 12px`, 色号 `#87867f` / `--sg`）。
-    * **正文部**：大标题（色号 `#ebd5b3`）与内容列表/超链接（蓝色 `#58a6ff` 或单色 `#faf9f5`）。
-    * **左下角**：MEMOS/DAYS 计数统计元信息（Mono 字体全大写，`font-size: 11px`，字间距 `0.05em`，色号 `#87867f`）。
-    * **右下角**：微型像素贡献网格（Contribution Grid SVG，暗灰色背景配合淡绿色活跃格子），增加“知识沉淀”的视觉质感。
-    * **中底端**：极浅浮水印品牌签名（`opacity: 0.15`）。
-* **抖音/故事竖屏安全区 (9:16 - 1080×1920)**：
-  - 顶部 `14%`：只放置品牌 Logo / 章节 Kicker，不得放关键正文。
-  - 中部 `44% - 52%`：主视线区域，放置核心大字标题。
-  - 底部 `20%` & 右侧 `15%`：避让平台交互按钮和点赞区，保持空白或纯色过渡。
-
-### 2. 视觉双轨系统 (Visual Dual-Track System)
-每套社交卡片必须严格继承且不混用以下两种调性之一：
-* **电子杂志风 (Editorial × E-ink)**：宋体/衬线体 display 标题 + 稳重无衬线/等宽 body 体，搭配暖白/墨色/纸本底色（Kraft / Dune / Ink Classic）。底色上方必须叠有**纸张纹理（Paper Grain）或 WebGL 墨水渲染动效层**，丰富图面细节，适合叙事、设计随笔、手绘及人文调性。
-* **瑞士国际主义风 (Swiss International)**：Grotesque 无衬线体（大字号特轻/特细以防笨重，小标注使用 Mono 字体），极其严苛的网格线左对齐与 0.8px 网格线。大色块间使用高饱和度单一锚点色（如 IKB 蓝、柠檬黄、安全橙），强调数据指标和功能框架。
-
-### 3. 公众号双封面系统 (WeChat Paired Cover System)
-* **联合设计预览**：微信公众号封面必须产出 `21:9` 主封面 + `1:1` 辅助封面配对（在同一个 HTML 中渲染预览）。
-* **独立排版原则**：**禁止**直接将 21:9 封面强行裁剪为 1:1。21:9 封面应以主副标题及视觉透视图为核心；1:1 封面则采用大号文字排版，去除小字副标题，默认不加插图，确保缩略图状态下的极端易读性。
-
-### 4. 3:4 竖卡填充密度 (3:4 Portrait Density Rules)
-* **必须吃满画布**：社交卡片（3:4 竖版）的内容（文字 + 配图 + 数据指标）在垂直方向必须覆盖 **$\ge 75\%$** 的画布高度。
-* **留白纪律**：禁止使用 `<div style="flex: 1"></div>` 上下夹击强行将内容压缩在中段。任何超过 15% 画布高度的纯空白条带必须提供留白理由（如：大图自带的呼吸留白、单行金句/宣言的极简排版、或设计好的页眉页脚 whitespace 控制）。
-
-### 5. 配图筛选与真实版权溯源 (Web-Sourced Images & Provenance)
-* **真实媒介优先**：优先向用户索取真实照片、截图。当必须采用网络配图时，优先从免版权或署名图库检索：Pexels（适合国风/中文特定场景） $\rightarrow$ Unsplash（适合生活方式/质感插图） $\rightarrow$ Flickr CC（通过 `license=2,3,4,5,6,9` 参数检索具象纪实摄影）。
-* **落盘溯源纪律**：网络拉取的图片必须在任务目录的 `assets/SOURCES.md` 中以 `文件名 ← 原 URL` 形式落盘存档。生成卡片时，如用户确认需要，须在卡片角落标注微型 Mono 字体的来源（如 "Photo · Pexels · @author"）。
-
-### 6. SVG 矢量排版工艺系统 (SVG Typography & Ornaments)
-SVG 不是插图工具，而是**数字版的印刷版刻工艺**。SVG 元素需满足 CSS 无法实现的需求，且整体视觉面积占比不得超过内容区的 `15%`。
-
-* **类型 A：对称排版装饰器 (Typographic Ornament)**
-  - 用途：替代平庸的 CSS 细实线，用于分节、段落过渡。
-  - 规范：左右轴对称构图，中心使用小菱形或双圆节点（色号 `#c96442`），两侧发丝细线（线宽 ≤ 0.8px，色号 `#b0aea5`）。
-* **类型 B：大号引言符 (Display Quote Mark)**
-  - 用途：在金句、设计宣言或项目概况的背景底层置入半透明巨型引号。
-  - 规范：使用 SVG `<text>` 渲染 Georgia 字体，字号 `70px - 100px`，透明度 `0.07 - 0.12`，绝对定位在文字块左上角，`z-index: 0`。
-* **类型 C：图案底纹纹理 (Pattern Texture)**
-  - 用途：为技术指标区块、摘要列制造纸质和活字印刷网点纹理。
-  - 规范：利用 `<pattern>` 绘制 `6px - 10px` 的网点（`circle`）或网格细线，颜色为 `#c96442`，透明度控制在 `0.05 - 0.08` 之间，隐约可见即可。
-* **类型 D：嵌入式数据可视化 (Embedded Data Viz)**
-  - 用途：展示建筑技术指标（如碳排放、绿化率、出让面积比例）。
-  - 规范：折线图（`<polyline>`）或进度条（`<line>`）通过 `stroke-dasharray` 增加淡入动画。柱状图（`<rect>`）边缘必须带 `rx="1"` 轻微圆角，正向数据用 Terracotta，辅助数据用 Stone-Gray。**禁止使用 3D 柱体或彩色饼图**。
-
----
-
-## 网页到印刷排版 (Web-to-Print & CSS Paged Media)
-
-在制作作品集或画册 PDF 时，直接使用 HTML+CSS 并配合 Paged Media 渲染引擎（如 WeasyPrint 或 paged.js）是一个高度敏捷的系统方案。相比传统 InDesign，它支持数据 reflow 与自动化模板排版。
-
-### 1. 页面几何尺寸与装订边距 (Page Geometry & Margins)
-利用 `@page` 控制物理纸张大小，并用 `:left` 和 `:right` 选择器控制不对称的内外侧边距（Inside/Outside Margins），为装订预留安全空间：
-```css
-:root {
-    --inside-margin: 0.75in;  /* 靠近书脊/装订线的一侧，边距加宽防止图文被卷入 */
-    --outside-margin: 0.5in;  /* 靠外一侧边距 */
-}
-
-@page {
-    size: A4 landscape;       /* 建筑作品集常用横版 A4 */
-    margin-top: 0.7in;
-    margin-bottom: 0.7in;
-}
-
-@page :left {
-    margin-left: var(--outside-margin);
-    margin-right: var(--inside-margin);
-    @top-left {
-        content: "PROJECT PORTFOLIO";
-        font-family: "Inter", sans-serif;
-        font-size: 8.5pt;
-        color: #666;
-    }
-}
-
-@page :right {
-    margin-left: var(--inside-margin);
-    margin-right: var(--outside-margin);
-    @top-right {
-        content: counter(page);  /* 自动页码计数 */
-        font-family: "Jost", sans-serif;
-        font-size: 9pt;
-    }
-}
-```
-
-### 2. 章节首页页眉遮挡 Hack (Suppressing Header on Chapter Start)
-当章节首页使用大标题时，通常需要隐藏页眉以保持画面干净。由于纯 CSS 缺乏跨页状态条件判断，可以通过为章节标题设置伪元素，生成白色背景色块向上“物理遮挡”页眉：
-```css
-h2.chapter-title {
-    position: relative;
-    break-before: page;       /* 强制该章节在新页开始 */
-}
-
-/* 用白色区域物理遮盖上方的页眉区域 */
-h2.chapter-title::before {
-    content: '';
-    position: absolute;
-    top: -1in;                /* 负偏置覆盖到页空页眉区域 */
-    left: 0;
-    width: 100%;
-    height: 1.8in;
-    background-color: white;  
-    z-index: 10;              /* 确保在页眉层级之上 */
-}
-
-/* 降低页眉的 z-index 确保其能被遮盖 */
-@page :left { @top-left { z-index: -1; } }
-@page :right { @top-right { z-index: -1; } }
-```
-
-### 3. 段落微排版控制 (Micro-Typography)
-* **避头尾与防单行 (Widows & Orphans)**：
-  - `orphans: 2;`：每页底部至少保留段落的 2 行，防止孤立的段落首行留在上一页。
-  - `widows: 2;`：每页顶部至少保留段落的 2 行，防止段落的最后一句话单独掉入下一页页首。
-* **自动折行与连字符 (Auto-Hyphenation)**：
-  - 必须在 HTML 根节点设置正确的语言属性（如 `<html lang="en-us">`），连字符字典才会生效。
-  - 样式声明：`body { hyphens: auto; hyphenate-limit-chars: 6 3 2; }`（控制单词折行的字数阈值），使两端对齐的文本边缘更自然平滑。
-* **防单词悬挂 (Preventing Runts)**：
-  - 在 HTML 中，使用非换行空格（`&nbsp;`）替换段落中最后两个单词之间的普通空格，确保最后一行至少有 2 个单词，避免段底出现孤立单词。
-
----
-
-## AI 资产渲染与品牌一致性管线 (AI Asset Rendering & Brand Consistency Pipeline)
-
-在混合使用 AI 渲染图像、视频与动态字形图层时，必须遵循严苛的管线控制，以确保文字可读性与品牌视觉的一致性，防止生成图像中的文本或标识发生漂移。
-
-### 1. 文字避让区构图 (Text Zone Composition)
-* **不要**在生成图像后才试图通过描边、阴影或半透明蒙版来强行提高文字可读性。在生成图画前，必须**将 1/3 的画面空间设计为避让区（Text Zone）**。
-* **构图避让区划分**：每一幅画面需声明其避让的 1/3 区域（左侧、右侧或底部），并指定明确的**自然对比源**以控制色彩亮度。
-  - **暗色避让区（配白色文字）**：提示词中指定具体的自然光影结构，例如：“the left third of frame is in deep shadow from the architectural overhang, near-black”（左侧 1/3 为建筑阴角深色投影）或“dark polished concrete ground fills the bottom third”（底部 1/3 为深色抛光混凝土路面）。
-  - **亮色避让区（配深色文字）**：例如：“bright overcast sky fills the upper-left third”（左上 1/3 为明亮的阴天天空）。
-* **防干扰保护性条款 (Preservation Clause)**：在向 Veo 或 Image 2 发送提示词时，必须显式限制生成模型在避让区中添加细节或运动。
-  - *模板*：“The [left/right/bottom] third of frame is [contrast source]. This area stays dark and empty throughout the shot — no light creep, no objects entering, and no motion in this zone.”
-
-### 2. 锁定品牌一致性 (Locked Brand Identity)
-为了在不同透视效果图、展板及 mockups 中维持标志/字形完全一致，禁止让 AI 自由绘制 logo。应采用**两步锁定管线**：
-* **步骤 A：建立 canonical 标志底片**
-  - **SVG 转 PNG（首选）**：使用代码绘制精准的 SVG 标志（标题 + icon），并在渲染端导出为高分辨率 PNG（在 headless 环境下，避免 `Helvetica` 降级为圆角 `Noto Sans`/`Calibri` 的 Slop 效应，必须指定 **`Liberation Sans`** 或嵌入的品牌真字体）。
-  - **GPT Image 2 单色标志板**：在平面纯色背景上生成标志板，挑出字形与间距最完美的一张，将其 PNG 固化为 master 底片。
-* **步骤 B：在后续场景生成中强制引用 (inputImages)**
-  - 将 canonical 标志 PNG 作为 `inputImages` / 参考图传入所有的场景渲染任务。
-  - 提示词中附加**重现约束命令**：*“Reproduce the provided brand logo artwork EXACTLY as shown — same letterforms, spacing and symbol; do not redraw, restyle, translate or re-letter it. Place it as a printed/applied graphic in the scene.”*
-* **文字锁定品牌包 (Brand Kit)**：图像模型对十六进制 Hex 色值不敏感，必须在每个提示词末尾添加一行描述性 Brand Kit：描述 5 个代表品牌的色彩字面名（如 "fresh spring-leaf green, deep evergreen ink, warm off-white, with marigold-yellow accents"），并附带指令 `Spell every word exactly; no invented or garbled text, no extra logos.`。
-
-### 3. 字体渲染降级与光学对齐 (Font Fallback & Optical Alignment)
-* **无头渲染降级防护**：在 Puppeteer/WeasyPrint 等无头 Chrome 浏览器中，默认 `sans-serif` 会降级为 `Noto Sans CJK` 等圆角字形。如果需要经典的 Helvetica 视觉效果，必须加载 **`Liberation Sans`** 或配置 `@font-face` 嵌入本地真字体文件。
-* **运行时光学对齐 JS 纠偏**：大字号标题的墨迹边界（Ink Boundary）由于字形前轴测间距（Side-bearing）而不会与网格绝对重合。在 `document.fonts.ready` 后，通过 canvas 测量 `actualBoundingBoxLeft`，自动计算并向左微调 `margin-left`（如 `el.style.marginLeft = -abl + 'px'`），确保视线上文字的墨迹外轮廓完美咬合在网格线上。
-
----
-
-## 极简纸本排版与数据文档规范 (Warm Paper & Minimalist Document Design)
-
-当排版长篇技术报告、学术性白皮书、项目策划案或印刷级作品集文本时，必须遵循严谨的“纸本感”版式规范，确保阅读的宁静与客观。
-
-### 1. 纸本视觉基调 (The Kami Stance)
-* **画布色底**：基色采用温润的羊皮纸/温和白（`#F4F1EA` 或 `#F3F0E8`），而非刺眼的纯白 `#FFFFFF`，以提供舒适的阅读底纹。
-* **文字层级与衬线主导**：主标题与陈述性文字使用高雅的衬线体/宋体（英文 Charter / Georgia，中文 TsangerJinKai02 / 思源宋体），其余正文配以安静的无衬线体/黑体。
-* **字号比例**：遵循“双字号法则”，Display 大标题的字号通常为正文字号的 2 倍。大标题字重需偏轻（Light/Medium），严禁为了凸显存在感而加粗大字号标题。
-
-### 2. 对齐与微间距纪律
-* **两端排布**：正文必须使用**左对齐，右侧自然流出 (Flush-left, ragged-right)**。严禁使用强制两端对齐（Justified），避免在非英文或中英混排下产生极不自然的单词间距拉断。
-* **缺图/无图的备用设计**：如果项目缺乏真实的配图或截图，直接在 HTML 模板中注释掉图片容器，改走高雅的**纯文字排版**与大字号文字块呼吸留白，决不允许用低质网络免版权插画（如扁平几何、彩色渐变块）作为无意义的装饰。
-
-### 3. 参数化沟通 (Feedback Protocol)
-当针对页面进行视觉微调沟通时，禁止使用“不够专业/太挤/太松/不好看”等模糊主观词汇，必须结合参数化属性进行定量表达：
-* 调整行高（当前行高与目标行高，如 `1.25` $\rightarrow$ `1.4`）、边距（Padding/Margin）、字体族、或灰度对比。
-
----
-
-## 教学式图板与矢量分析图语法 (Educational Boards & Schematic Diagram Grammar)
-
-在展板、幻灯片或分析图册中，分析图纸（Architecture Diagrams / Flowcharts）必须承担**客观叙事**的职能，拒绝成为无语义的“色块摆设”。
-
-### 1. 画板优先于卡片 (Canvas Before Card)
-每个分析图面是一个固定比例的**独立画板（Artboard）**，而非装饰性的卡片堆叠：
-* 四周必须保留安全避让带（Safe Area）。
-* 每个画板只承载**一个核心教学模型/系统流程**。
-* 严禁无意义的卡片嵌套与层层投影叠放。背景应当比所有内容都安静。
-
-### 2. 语义化元素与线条分级 (Semantic Elements & Wire Hierarchy)
-分析图中的每种线和框必须在逻辑上有所指代：
-* **节点 (Node)**：指代概念、执行步骤、核心组件或断点。节点标签文字必须短小精炼（中文 $\le 12$ 字，英文 $\le 4$ 词）。
-* **连线 (Edge)**：指代依赖关系、因果流动、状态转化或反馈环。
-* **分组 (Group)**：指代系统边界、架构分层或分类对比。
-* **线条粗细分级**：结构边界线控制在 `1-2px`；常规关系连线 `2-3px`；高亮/焦点流动线 `3-4px`。箭头严禁穿越或碰撞文本标签。
-
-### 3. 矢量图表语法的自动路由 (Schematic Diagram Auto-Selection)
-分析数据的图表类型，必须基于数据结构进行精准路由，严禁凭主观喜好随意挑选：
-
-| 数据结构与图面叙事 (Data / Logic Shape) | 图表语法路由 (Chart / Diagram Type) |
-|---|---|
-| 包含开盘/收盘/最高/最低的时序指标、日度股价 | **K 线图 (Candlestick)** |
-| 包含一系列有增有减的输入贡献度，最终求和汇总（如收入 bridge 拆解） | **瀑布图 (Waterfall)** |
-| 单一系列且各项占比相加为 100%，分类项数 $\le 6$ | **环形图 (Donut Chart)** |
-| 单一系列且各项占比相加为 100%，分类项数 $\ge 7$ | **横向柱状图 (Horizontal Bar Chart)** |
-| 跨越时间轴（月、季、年）的两个或多个趋势对比 | **折线图 (Line Chart)** |
-| 包含时序概念但变化以绝对数为主，无高频波动率 | **纵向柱状图 (Bar Chart)** |
-| 两个或三个分类集合之间的交集与重合度 | **维恩图 (Venn Diagram)** |
-| 具有 2×2 战略定位、优先级象限或双轴权衡 | **2x2 象限图 (Quadrant / Matrix)** |
-| 具有树状分支或多层级深入（层级 $\ge 2$）的逻辑 | **树形拓扑图 (Tree / Hierarchy)** |
-| 包含复杂因果决策路径与条件分支的流程 | **流程图 (Flowchart)** |
-| 跨团队协作、跨系统交互，包含 $\ge 3$ 个明确的执行主体 | **泳道图 (Swimlane)** |
+| 何时读 | 文件 | 内容 |
+|---|---|---|
+| 出社交卡片 / 电子画册（小红书 / 微信 / B站 / 抖音） | `references/social-editorial-cards.md` | 卡片黄金尺寸与安全区、视觉双轨系统、公众号双封面、3:4 填充密度、配图版权溯源、SVG 排版工艺 4 类 |
+| 做作品集 / 画册 PDF（HTML+CSS Paged Media） | `references/web-to-print-paged-media.md` | `@page` 几何与装订内外边距、章节首页页眉遮挡 hack、避头尾 / 连字符 / 防单词悬挂 |
+| 生成 AI 渲染图，要在图上压字或放品牌标志 | `references/ai-asset-rendering-pipeline.md` | 1/3 文字避让区构图、品牌标志两步锁定管线、无头渲染字体降级与光学对齐纠偏 |
+| 排长篇技术报告 / 白皮书 / 印刷级文本 | `references/warm-paper-document-design.md` | 纸本视觉基调（Kami）、对齐与微间距纪律、参数化沟通协议 |
+| 画分析图 / 流程图 / 教学式图板，要选图表类型 | `references/educational-boards-schematic-grammar.md` | 画板优先于卡片、语义化元素与线条分级、**图表类型自动路由表** |
 
 ---
 

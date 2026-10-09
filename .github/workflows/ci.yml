@@ -43,9 +43,19 @@ jobs:
     - name: Verify Consistency Kit Checker
       run: python3 scripts/check_archviz.py --self-test
 
-    # Nothing else in this workflow executes scripts/*.py, and none of them are
-    # imported by the kit. Compiling catches a syntax error that would otherwise
-    # only surface when someone runs the script by hand. Stdlib only — no
-    # dependency install, because this repo declares none.
+    # Verifies the manifest is installable, not just present. The `deps` check
+    # inside the kit already fails on an undeclared import; this step catches
+    # what it structurally cannot — a declared name that does not resolve, or a
+    # specifier no release satisfies. (Measured: all seven names resolve on
+    # PyPI as of 2026-10-09.)
+    - name: Install declared dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Nothing else in this workflow executes scripts/*.py. Compiling catches a
+    # syntax error that would otherwise only surface when someone runs the
+    # script by hand. Note the limits: byte-compilation never *imports*, so it
+    # cannot see a missing dependency — that is `deps`' job, not this one's.
     - name: Byte-compile scripts
       run: python3 -m compileall -q scripts

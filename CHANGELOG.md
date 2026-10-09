@@ -1,5 +1,60 @@
 # Changelog
 
+## 1.4.0 (2026-10-09)
+
+本仓此前**没有 `references/` 目录**，SKILL.md 是家族里唯一「正文自含」的一个。
+
+### Changed
+
+- **正文拆进 `references/`，SKILL.md 51,848 → 35,233 字节（−32.1%）。** 迁出 5 节
+  按需查阅的延伸规范，逐字保留、零删改（已用脚本比对：5 个文件正文与源段落
+  完全相同，仅把内部 `###` 降一级为 `##`）：
+  `social-editorial-cards.md` / `web-to-print-paged-media.md` /
+  `ai-asset-rendering-pipeline.md` / `warm-paper-document-design.md` /
+  `educational-boards-schematic-grammar.md`。
+  SKILL.md 里留一张索引表 + 一句边界声明。
+  **闸门、设计纪律、五步工作流、Pre-Flight、使用边界全部留在 SKILL.md** ——
+  这是拆分时划的线，也是为什么这版是「保守边界」。
+- 字节上限棘轮 **52,000 → 36,000**（拆之前是 99.7% 顶格，现在 97.9%）。
+
+### Added
+
+- **`references/` 目录** —— 本仓第一个。拆分后 35 KB 正文配 5 个参考文件，
+  不再是家族里渐进披露比例最差的一个。
+- **`requirements.txt`** —— `Pillow` 与 `playwright`。此前 `scripts/` 有第三方
+  import 却**没有任何依赖清单**，干净检出直接 `ImportError`。
+- **`deps` 检查** —— 套件新增第 6 项：把仓库里每个第三方 import 与清单对账。
+  实测本仓 2/2 个 import 未声明。
+- **`coverage` 检查** —— 套件新增第 7 项：`references/*.md` 必须从 SKILL.md
+  **可达**（传递可达，不是直接点名）。索引表里删一行、计数断言仍然正确 ——
+  这个失效模式 `counts` 结构上看不见，已用反向验证确认。
+
+### Fixed
+
+- **`scripts/` 有未声明的第三方依赖，且没有任何依赖清单。** `render_board_with_charts.py`
+  顶层 `import PIL`，`capture_rects.py` 函数内 `import playwright` —— 干净检出跑不起来。
+  现由 `requirements.txt` 声明，并由套件的 `deps` 检查守住不再复发。
+  同一缺陷在**家族五个仓库里全部存在**（见套件 `deps` 检查的 docstring）。
+
+### Notes
+
+- **移出的那节变更日志自身有两个缺陷，照原样保留而不改写**：同一个版本有**两个
+  `## v1.2.0` 标题**，且版本顺序非单调（v1.2.0 / v1.1.0 / v1.2.0 / v1.1.1）。
+  两者都记在这里以便可见；都不影响版本门禁（只读第一个标题）。
+- **`requirements.txt` 是给脚本用的，不是给 skill 用的。** 套件本身
+  `check_archviz.py` 只用标准库 —— 它必须能在裸 Python 上守住这个仓库，
+  这是当初拒绝「引入项目包」那条设计的同一条理由。
+- **CI 里装依赖是为了验证清单可安装，不是为了发现缺 import。** `pip install`
+  加 `compileall` 这个组合**检测不出任何缺失依赖** —— 字节编译从不 import。
+  真正管这件事的是 `deps` 检查（离线、确定性、直接点名模块与文件）。
+  安装步骤管的是另一件事：清单里的名字是否解析得到、版本约束是否可满足。
+  经 PyPI 核对，7 个名字在 2026-10-09 全部存在。
+- **pre-commit 垫片装到了 `.git/hooks/pre-commit`。** `.git/hooks/` 不进版本库，
+  所以脚本躺在 `scripts/` 里不等于它会执行 —— 五个仓库里有四个只有脚本没有垫片。
+  已把 archviz-diagram 早就有的那个三行垫片补装到 archviz-3d / archviz-sketch /
+  archviz-animated / 本仓库。撤销方式：删掉该文件。
+- **依赖安装只在 CI 做，不在 pre-commit 做。** 否则每次提交都依赖网络。
+
 ## 1.3.0 (2026-10-09)
 
 This repo had **no CI and no `CHANGELOG.md`** before this release — the release

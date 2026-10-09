@@ -1,0 +1,13 @@
+# Python dependencies for the archviz-layout scripts.
+#   pip install -r requirements.txt
+#
+# The consistency kit (scripts/check_archviz.py) is stdlib-only on purpose and
+# needs none of these — it has to be able to guard this repo from a bare Python.
+
+# scripts/render_board_with_charts.py — compose a board with embedded charts.
+Pillow>=10.0.0
+
+# scripts/capture_rects.py — measure element boxes in a real browser.
+# Imported lazily inside the function, so the module byte-compiles without it.
+# Also needs the browser binary: `playwright install chromium`.
+playwright>=1.40
