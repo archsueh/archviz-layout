@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Verify Consistency
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    # One portable kit, one per-repo config — see archviz-diagram's ADR-003.
+    # Five checks: version / SKILL.md byte budget / description routing surface
+    # / count claims / CJK encoding. This repo had no CI at all before this.
+    #
+    # The version check anchors SKILL.md metadata.version against CHANGELOG.md.
+    # There is no pyproject.toml here, so the changelog is the only second
+    # witness — which is why CHANGELOG.md had to exist first. A version gate
+    # with nothing to compare against is not a gate.
+    #
+    # The byte budget is a ratchet, not a target: 52000 is set just above the
+    # current size so any future growth trips it. This repo has the worst
+    # body-to-references ratio in the family (zero files under references/),
+    # so the cap is expected to come down as SKILL.md is split, never up.
+    - name: Verify Consistency Kit
+      run: python3 scripts/check_archviz.py
+
+    # A checker is only a gate if its own failure modes are tested. This runs
+    # the adversarial fixtures: every check is exercised in both polarities,
+    # including the cases that must NOT fire (a semver in a docstring, a name
+    # satisfied by an alias, a charset exemption carrying a reason).
+    - name: Verify Consistency Kit Checker
+      run: python3 scripts/check_archviz.py --self-test
+
+    # Nothing else in this workflow executes scripts/*.py, and none of them are
+    # imported by the kit. Compiling catches a syntax error that would otherwise
+    # only surface when someone runs the script by hand. Stdlib only — no
+    # dependency install, because this repo declares none.
+    - name: Byte-compile scripts
+      run: python3 -m compileall -q scripts

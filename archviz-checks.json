@@ -1,0 +1,46 @@
+{
+  "kit": 1,
+  "skill_md": "SKILL.md",
+  "skill_md_max_bytes": 52000,
+  "require_lf_pin": true,
+
+  "version": {
+    "changelog": "CHANGELOG.md"
+  },
+
+  "registries": {
+    "visual_languages": {
+      "kind": "source_regex",
+      "file": "SKILL.md",
+      "entry": "^\\* \\*\\*\\d+\\.\\s*([^\\n]+?[)）])",
+      "flags": "M"
+    }
+  },
+
+  "routing": {
+    "registries": ["visual_languages"],
+    "also_check_triggers": false
+  },
+
+  "counts": [
+    {
+      "id": "visual_languages",
+      "truth": { "kind": "registry_len", "registry": "visual_languages" },
+      "assertions": [
+        { "file": "SKILL.md", "regex": "(\\d+)\\s*套视觉语言（visual languages" },
+        { "file": "SKILL.md", "regex": "建筑版式\\s*(\\d+)\\s*套视觉语言" }
+      ]
+    }
+  ],
+
+  "cjk": {
+    "scan": [
+      "SKILL.md",
+      "README.md",
+      "CHANGELOG.md",
+      "design-md/*/DESIGN.md",
+      "examples/*.html"
+    ],
+    "require_charset": ["examples/*.html"]
+  }
+}
