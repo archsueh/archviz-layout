@@ -9,3 +9,5 @@ __pycache__/
 # `board-demo.png` is a committed demo artifact, so it stays.
 output/*
 !output/board-demo.png
+*.bak
+*.orig
